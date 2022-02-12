@@ -1,10 +1,11 @@
-import './App.css';
+import { Heading, Text } from "@chakra-ui/react";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Project-Ticket-Tracker</h1>
-    </div>
+    <>
+      <Text>This is a chakra tag</Text>
+      <Heading>This is a heading</Heading>
+    </>
   );
 }
 
