@@ -4,13 +4,16 @@ import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
 import { AccountContextProvider } from "./context/AccountContext";
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme}>
-      <AccountContextProvider>
-        <App />
-      </AccountContextProvider>
+      <BrowserRouter>
+        <AccountContextProvider>
+          <App />
+        </AccountContextProvider>
+      </BrowserRouter>
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
