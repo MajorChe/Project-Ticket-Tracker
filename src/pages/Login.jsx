@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
   Button,
-  Checkbox,
   Flex,
-  FormControl,
-  FormLabel,
   Heading,
-  Input,
   Link,
   Stack,
   Text,
   useColorModeValue,
-  VStack,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
 import * as Yup from "yup";
+import {Link as ReachLink} from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import TextField from "../components/TextField";
 
@@ -33,7 +29,7 @@ const Login = () => {
         onSubmit={(values,actions) => {
           const vals = {... values};
           actions.resetForm();
-          login(vals.email,vals.password)
+          login(vals.email,vals.password) //using the login function from uselogin hook
         }}
       >
         <Flex
@@ -45,13 +41,13 @@ const Login = () => {
           <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
             <Stack align={"center"}>
               <Heading fontFamily={"poppins"} fontSize={"4xl"}>
-                Sign in to your account
+                Login to your account
               </Heading>
             </Stack>
             <Box
               rounded={"lg"}
               bg={useColorModeValue("white", "gray.700")}
-              border={"2px solid green"}
+              border={"2px solid #4299e1"}
               boxShadow={"xl"}
               p={8}
             >
@@ -92,6 +88,11 @@ const Login = () => {
                     Sign in
                   </Button>
                 </Stack>
+                <Stack pt={6}>
+                  <Text align={"center"}>
+                    New user? <ReachLink to={"/signup"}><Link color={"blue.400"}>Sign up</Link></ReachLink>
+                  </Text>
+                </Stack>
               </Stack>
             </Box>
           </Stack>
@@ -102,35 +103,3 @@ const Login = () => {
 };
 
 export default Login;
-{
-  /* <div className="main">
-      <form className="login-form" onSubmit={handleLogin}>
-      <h1>Login</h1>
-      {error && (
-        <p className="error">
-          {error}
-          <br />
-          <br />
-        </p>
-      )}
-        <label>Email:</label>
-        <input
-          type={"email"}
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-        />
-        <label>Password:</label>
-        <input
-          type={"password"}
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        {!isPending && <button className="btn btn-2">Login</button>}
-        {isPending && (
-          <button className="btn btn-2" disabled>
-            Loading
-          </button>
-        )}
-      </form>
-    </div> */
-}
