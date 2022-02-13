@@ -21,14 +21,17 @@ export const Navbar = () => {
     >
       <Flex
         align={"center"}
-        letterSpacing="8px"
-        gap={{ base: "0px", md: "20px" }}
+        letterSpacing="6px"
+        gap={{ base: "3px", md: "20px" }}
         wrap={"wrap"}
+        display={{base:"none", md: "flex"}}
       >
         <Image src={logo} boxSize={{ base: "20px", md: "36px" }} />
-        <Text fontWeight={"bold"} fontSize={{ base: "xs", md: "xl" }}>
-          Project-Ticket-Tracker
-        </Text>
+        <ReachLink to="/">
+          <Text fontWeight={"bold"} fontSize={{ base: "xs", md: "xl" }}>
+            Project-Ticket-Tracker
+          </Text>
+        </ReachLink>
       </Flex>
       <HStack>
         <ReachLink to={"/login"}>
