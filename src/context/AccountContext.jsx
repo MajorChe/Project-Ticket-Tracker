@@ -22,6 +22,8 @@ export const AccountContextProvider = ({ children }) => {
     loggedIn: false,
   });
 
+  console.log(state)
+
   useEffect(() => {
     const unsub = projectTicketTrackerAuth.onAuthStateChanged((user) => {
       dispatch({ type: "LOGGEDIN", payload: user });

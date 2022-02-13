@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_KEY,
@@ -17,7 +18,13 @@ firebase.initializeApp(firebaseConfig);
 //initialize service
 const projectTicketTracker = firebase.firestore();
 const projectTicketTrackerAuth = firebase.auth();
+const projectTicketTrackerStorage = firebase.storage();
 
-const timestamp = firebase.firestore.Timestamp
+const timestamp = firebase.firestore.Timestamp;
 
-export { projectTicketTracker, projectTicketTrackerAuth,timestamp };
+export {
+  projectTicketTracker,
+  projectTicketTrackerAuth,
+  projectTicketTrackerStorage,
+  timestamp,
+};

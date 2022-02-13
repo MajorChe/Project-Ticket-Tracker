@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { projectTicketTrackerAuth } from "../firebase/Config";
+import {
+  projectTicketTrackerAuth,
+  projectTicketTrackerStorage,
+} from "../firebase/Config";
 import { useAuthContext } from "./useAuthContext";
 
 export const useSignup = () => {
@@ -7,7 +10,7 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(false);
   const [isCancelled, setIsCancelled] = useState(false);
   const { dispatch } = useAuthContext();
-  const signup = async (name, email, password,avatar) => {
+  const signup = async (name, email, password, avatar) => {
     setError(null);
     setIsPending(true);
 
@@ -22,8 +25,16 @@ export const useSignup = () => {
         throw new Error("Could not sign up!!");
       }
 
-      await response.user.updateProfile({ displayName: name, photoURL:avatar });
-      console.log(response)
+      // upload user image
+      const uploadPath = `thumbnails/${response.user.uid}/${avatar.name}`
+      const img = await projectTicketTrackerStorage.ref(uploadPath).put(avatar)
+      const imgUrl = await img.ref.getDownloadURL()
+
+      await response.user.updateProfile({
+        displayName: name,
+        photoURL: imgUrl,
+      });
+
       // dispatch login action type
       dispatch({ type: "LOGIN", payload: response.user });
 

@@ -18,12 +18,12 @@ import TextField from "../components/TextField";
 
 const Signup = () => {
   const { signup, error, isPending } = useSignup();
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(undefined);
   return (
     <>
       <Formik
-        initialValues={{ name: "", email: "", password: "", avatar: undefined }}
-        validationSchema={Yup.object({
+        initialValues={{ name: "", email: "", password: ""}}
+        validationSchema={Yup.object().shape({
           name: Yup.string().required("name required!"),
           email: Yup.string().email().required("email required!"),
           password: Yup.string().required("Password required!"),
@@ -61,6 +61,7 @@ const Signup = () => {
               p={8}
             >
               <Stack spacing={4} as={Form}>
+                {error && <Text color={"red.400"}>{error}</Text>}
                 <HStack>
                   <TextField
                     name="name"
