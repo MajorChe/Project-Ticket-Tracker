@@ -91,7 +91,7 @@ const Login = () => {
                 </Stack>
                 <Stack pt={6}>
                   <Text align={"center"}>
-                    New user? <ReachLink to={"/signup"}><Link color={"blue.400"}>Sign up</Link></ReachLink>
+                    New user? <ReachLink to={"/signup"}><Text as={"span"} color={"blue.400"}>Sign up</Text></ReachLink>
                   </Text>
                 </Stack>
               </Stack>

@@ -1,14 +1,15 @@
 import React from "react";
 import logo from "../assets/logo.svg";
-import { Link as ReachLink } from "react-router-dom";
+import { Link as ReachLink} from "react-router-dom";
+import { AddIcon } from '@chakra-ui/icons'
 import {
   IconButton,
   Box,
   CloseButton,
-  Flex,
+  Flex,Link,
   Icon,
   useColorModeValue,
-  Link,Image,
+  Image,
   Drawer,
   DrawerContent,
   Text,
@@ -16,22 +17,18 @@ import {
 } from "@chakra-ui/react";
 import {
   FiHome,
-  FiTrendingUp,
-  FiCompass,
   FiStar,
-  FiSettings,
   FiMenu,
 } from "react-icons/fi";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome },
-  { name: "Trending", icon: FiTrendingUp },
-  { name: "Explore", icon: FiCompass },
-  { name: "Favourites", icon: FiStar },
-  { name: "Settings", icon: FiSettings },
+  { name: "Project 1"},
+  { name: "Project 2"},
+  { name: "Project 3"},
+  { name: "Project 4"},
 ];
 
-const SideBar = ({ children }) => {
+const SideBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box
@@ -57,7 +54,7 @@ const SideBar = ({ children }) => {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }}>{children}</Box>
+      <Box ml={{ base: 0, md: 60 }}></Box>
     </Box>
   );
 }
@@ -76,48 +73,47 @@ const SidebarContent = ({ onClose, ...rest }) => {
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
+      <ReachLink to={"/"}><NavItem icon={FiHome}>Dashboard</NavItem></ReachLink>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon}>
+        <ReachLink key={link.name} to={"/"}> {/* add route */}
+        <NavItem icon={FiStar} area="/signup">
           {link.name}
         </NavItem>
+        </ReachLink>
       ))}
+      <ReachLink to={"/"}><NavItem icon={AddIcon}>Add Project</NavItem></ReachLink>
     </Box>
   );
 };
 
-const NavItem = ({ icon, children, ...rest }) => {
+const NavItem = ({ icon, area, children, ...rest }) => {
   return (
-    <Link
-      href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: "cyan.400",
-          color: "white",
-        }}
-        {...rest}
-      >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: "white",
-            }}
-            as={icon}
-          />
-        )}
-        {children}
-      </Flex>
-    </Link>
+        <Flex
+          align="center"
+          fontSize={"xl"}
+          p="4"
+          mx="4"
+          borderRadius="lg"
+          role="group"
+          cursor="pointer"
+          _hover={{
+            bg: "#4299e1",
+            color: "white",
+          }}
+          {...rest}
+        >
+          {icon && (
+            <Icon
+              mr="4"
+              fontSize="16"
+              _groupHover={{
+                color: "white",
+              }}
+              as={icon}
+            />
+          )}
+          {children}
+        </Flex>
   );
 };
 
@@ -144,7 +140,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
       <Image src={logo} boxSize={{ base: "20px", md: "36px" }} />
       <ReachLink to="/">
-        <Text fontWeight={"bold"} fontSize="2xl">
+        <Text fontWeight={"bold"} fontSize="lg">
           Project-Ticket-Tracker
         </Text>
       </ReachLink>

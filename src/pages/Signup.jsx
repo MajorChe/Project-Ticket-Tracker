@@ -120,7 +120,7 @@ const Signup = () => {
                 </Stack>
                 <Stack pt={6}>
                   <Text align={"center"}>
-                    Already a user? <ReachLink to={"/login"}><Link color={"blue.400"}>Login</Link></ReachLink>
+                    Already a user? <ReachLink to={"/login"}><Text as={"span"} color={"blue.400"}>Login</Text></ReachLink>
                   </Text>
                 </Stack>
               </Stack>
