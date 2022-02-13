@@ -9,7 +9,7 @@ import { Field, useField } from "formik";
 const TextField = ({ label, ...props }) => {
   const [field, setField] = useField(props);
   return (
-    <FormControl isInvalid={setField.touched && setField.error}>
+    <FormControl isInvalid={setField.touched && setField.error} isRequired>
       <FormLabel>{label}</FormLabel>
       <Input as={Field} {...field} {...props} />
       <FormErrorMessage>{setField.error}</FormErrorMessage>

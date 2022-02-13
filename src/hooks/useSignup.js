@@ -7,7 +7,7 @@ export const useSignup = () => {
   const [isPending, setIsPending] = useState(false);
   const [isCancelled, setIsCancelled] = useState(false);
   const { dispatch } = useAuthContext();
-  const signup = async (email, password, name) => {
+  const signup = async (name, email, password,avatar) => {
     setError(null);
     setIsPending(true);
 
@@ -22,8 +22,8 @@ export const useSignup = () => {
         throw new Error("Could not sign up!!");
       }
 
-      await response.user.updateProfile({ displayName: name });
-
+      await response.user.updateProfile({ displayName: name, photoURL:avatar });
+      console.log(response)
       // dispatch login action type
       dispatch({ type: "LOGIN", payload: response.user });
 

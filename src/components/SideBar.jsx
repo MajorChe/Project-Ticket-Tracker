@@ -6,7 +6,7 @@ import {
   IconButton,
   Box,
   CloseButton,
-  Flex,Link,
+  Flex,
   Icon,
   useColorModeValue,
   Image,

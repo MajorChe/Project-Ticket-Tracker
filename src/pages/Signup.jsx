@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -11,45 +11,28 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import {Link as ReachLink} from "react-router-dom";
+import { Link as ReachLink } from "react-router-dom";
 import * as Yup from "yup";
 import { useSignup } from "../hooks/useSignup";
 import TextField from "../components/TextField";
 
 const Signup = () => {
-  const FILE_SIZE = 160 * 1024;
-  const SUPPORTED_FORMATS = [
-    "image/jpg",
-    "image/jpeg",
-    "image/gif",
-    "image/png",
-  ];
+  const { signup, error, isPending } = useSignup();
+  const [image, setImage] = useState(null);
   return (
     <>
       <Formik
-        initialValues={{ name: "", email: "", password: "", avatar: "" }}
+        initialValues={{ name: "", email: "", password: "", avatar: undefined }}
         validationSchema={Yup.object({
           name: Yup.string().required("name required!"),
           email: Yup.string().email().required("email required!"),
           password: Yup.string().required("Password required!"),
-          avatar: Yup
-            .mixed()
-            .required("A file is required")
-            .test(
-              "fileSize",
-              "File too large",
-              (value) => value && value.size <= FILE_SIZE
-            )
-            .test(
-              "fileFormat",
-              "Unsupported Format",
-              (value) => value && SUPPORTED_FORMATS.includes(value.type)
-            ),
         })}
         onSubmit={(values, actions) => {
-          const vals = { ...values };
+          const vals = { ...values, avatar: image };
           actions.resetForm();
-          // login(vals.email, vals.password);
+          signup(vals.name, vals.email, vals.password, vals.avatar);
+          console.log(vals);
         }}
       >
         <Flex
@@ -59,7 +42,11 @@ const Signup = () => {
         >
           <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
             <Stack align={"center"}>
-              <Heading fontFamily={"poppins"} fontSize={"4xl"} textAlign={"center"}>
+              <Heading
+                fontFamily={"poppins"}
+                fontSize={"4xl"}
+                textAlign={"center"}
+              >
                 Sign up
               </Heading>
               <Text fontSize={"lg"} color={"gray.600"}>
@@ -88,6 +75,7 @@ const Signup = () => {
                     autoComplete="off"
                     label="Email"
                     focusBorderColor="black"
+                    type="email"
                   />
                 </HStack>
                 <TextField
@@ -95,6 +83,8 @@ const Signup = () => {
                   label="Avatar"
                   variant="unstyled"
                   type="file"
+                  accept="image/*"
+                  onChange={(e) => setImage(e.target.files[0])}
                 />
                 <TextField
                   name="password"
@@ -120,7 +110,12 @@ const Signup = () => {
                 </Stack>
                 <Stack pt={6}>
                   <Text align={"center"}>
-                    Already a user? <ReachLink to={"/login"}><Text as={"span"} color={"blue.400"}>Login</Text></ReachLink>
+                    Already a user?{" "}
+                    <ReachLink to={"/login"}>
+                      <Text as={"span"} color={"blue.400"}>
+                        Login
+                      </Text>
+                    </ReachLink>
                   </Text>
                 </Stack>
               </Stack>
