@@ -19,10 +19,9 @@ export const Navbar = () => {
     <Flex
       justifyContent={{ base: "center", md: "space-between" }}
       p={{ base: "0px", md: "25px" }}
-      bg={useColorModeValue("gray.50", "gray.800")}
+      bg={useColorModeValue("blue.100", "gray.800")}
       wrap="wrap"
       gap={{ base: "0px", md: "0px" }}
-      borderBottom="1px solid black"
     >
       <Flex
         align={"center"}

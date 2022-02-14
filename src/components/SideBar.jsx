@@ -16,6 +16,7 @@ import {
   useDisclosure,
   Avatar,
   Button,
+  Divider,
 } from "@chakra-ui/react";
 import { FiHome, FiStar, FiSettings, FiMenu } from "react-icons/fi";
 
@@ -25,10 +26,9 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
 const LinkItems = [
-  { name: "Projects", icon: DiCodeBadge },
-  { name: "Tickets", icon: GoIssueOpened },
-  { name: "Settings", icon: FiSettings },
-  { name: "Admin Panel", icon: FiSettings },
+  { name: "Tickets", icon: DiCodeBadge, link: "/project"},
+  { name: "Settings", icon: FiSettings, link: "/project" },
+  { name: "Admin", icon: FiSettings, link: "/project" },
 ];
 
 const SideBar = () => {
@@ -57,7 +57,7 @@ const SideBar = () => {
       </Drawer>
       {/* mobilenav */}
       <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }}></Box>
+      <Box ml={{ base: 0, md: "200px" }}></Box>
     </Box>
   );
 };
@@ -70,7 +70,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
       bg={useColorModeValue("white", "gray.900")}
       borderRight="1px"
       borderRightColor={useColorModeValue("gray.200", "gray.700")}
-      w={{ base: "full", md: 60 }}
+      w={{ base: "full", md: "200px" }}
       pos="fixed"
       h="full"
       {...rest}
@@ -81,18 +81,19 @@ const SidebarContent = ({ onClose, ...rest }) => {
       </Flex>
       <Avatar name="Avatar" src={user.photoURL} size="lg" />
       <Flex h="20" alignItems="center" mx="8" justifyContent="center">
-        <Text fontSize={"lg"}>
+        <Text fontSize={"md"}>
           Welcome, <b>{user.displayName}</b>
         </Text>
       </Flex>
+      <Text as={"hr"}  border={"1px solid black"} mb="3" mx={"3"}></Text>
       <ReachLink to={"/"}>
         <NavItem icon={FiHome}>Dashboard</NavItem>
       </ReachLink>
       {LinkItems.map((link) => (
-        <ReachLink key={link.name} to={"/"}>
+        <ReachLink key={link.name} to={link.link}>
           {" "}
           {/* add route */}
-          <NavItem icon={link.icon} area="/signup">
+          <NavItem icon={link.icon}>
             {link.name}
           </NavItem>
         </ReachLink>
@@ -104,11 +105,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-const NavItem = ({ icon, area, children, ...rest }) => {
+const NavItem = ({ icon, children, ...rest }) => {
   return (
     <Flex
       align="center"
-      fontSize={"xl"}
+      fontSize={"lg"}
       p="4"
       mx="4"
       borderRadius="lg"

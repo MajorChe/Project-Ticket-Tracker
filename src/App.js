@@ -6,6 +6,7 @@ import { Navbar } from "./components/Navbar";
 import SideBar from "./components/SideBar";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Dashboard from "./pages/Dashboard";
+import { Project } from "./pages/Project";
 
 const App = () => {
   const { user, loggedIn } = useAuthContext();
@@ -23,6 +24,7 @@ const App = () => {
             {!user && <Route path="/login" element={<Login />} />}
             <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/project/:id" element={<Project />} />
             </Route>
             <Route path="/*" element={<Navigate to="/" />} />
           </Routes>
