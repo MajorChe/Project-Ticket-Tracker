@@ -10,9 +10,9 @@ const TicketList = () => {
         <Text fontWeight={500} fontSize="lg" flex="1">Description</Text>
         <Text fontWeight={500} fontSize="lg">Author</Text>
       </Flex>
-      <TicketListItem/>
-      <TicketListItem/>
-      <TicketListItem/>
+      <TicketListItem id="1"/>
+      <TicketListItem id="2"/>
+      <TicketListItem id="3"/>
     </Flex>
   );
 };

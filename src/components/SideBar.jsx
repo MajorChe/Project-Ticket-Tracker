@@ -146,7 +146,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       height="20"
       gap={"20px"}
       alignItems="center"
-      bg={useColorModeValue("white", "gray.900")}
+      bg={useColorModeValue("#bee3f8", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="flex-start"
@@ -165,9 +165,15 @@ const MobileNav = ({ onOpen, ...rest }) => {
           Project-Ticket-Tracker
         </Text>
       </ReachLink>
-      {user && <Button display={{base: "flex", md: "none"}}bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}} onClick={logout}>
-          Logout
-        </Button>}
+      {user && 
+      <Button
+      display={{ base: "flex", md: "none" }}
+      colorScheme="red"
+      variant="outline"
+      onClick={logout}
+    >
+      Logout
+    </Button>}
     </Flex>
   );
 };
