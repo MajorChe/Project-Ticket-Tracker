@@ -43,7 +43,9 @@ const ProjectList = (props) => {
           </Flex>
           <Flex direction={"column"} gap={3} mt="20px">
             <ProjectListItem id={"1"}/>
+            <Divider/>
             <ProjectListItem id={"2"}/>
+            <Divider/>
             <ProjectListItem id={"3"}/>
           </Flex>
       </Box>

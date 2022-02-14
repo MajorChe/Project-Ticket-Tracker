@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Navbar } from "../components/Navbar";
+import ProjectCommentComponent from "../components/ProjectCommentComponent";
 import SideBar from "../components/SideBar";
 import TicketList from "../components/TicketList";
 
@@ -19,17 +20,18 @@ export const Project = () => {
       <SideBar />
       <Flex direction={"column"} w="100%">
         <Navbar />
-        <Flex px="20" py="8" justifyContent={"space-between"}>
-          <Text fontSize={"2xl"}>Project Name</Text>
-          <Text fontSize={"2xl"}>
+        <Flex px={{base: "20px", md: "20"}} py={{base: "30px", md: "8"}} justifyContent={"space-between"} wrap="wrap" gap={{base: "30px", md: "0px"}}>
+          <Text fontSize={{base: "xl", md: "2xl"}}>Project Name</Text>
+          <Text fontSize={{base: "md", md: "2xl"}}>
             Description Lorem ipsum dolor tempore cum accusantium similique iure
             quam?
           </Text>
         </Flex>
+        <Flex justifyContent={"space-between"} wrap="wrap">
         <Box
           maxW={"800px"}
           marginX={{ base: "2", md: "20" }}
-          marginY={"10"}
+          marginY={{ base: "2", md: "10" }}
           p="6"
           bg={useColorModeValue("white", "gray.800")}
           boxShadow={"2xl"}
@@ -55,8 +57,11 @@ export const Project = () => {
               <AddIcon /> &nbsp; Add Ticket
             </Button>
           </Flex>
+          {/* list of all tickets go below */}
           <TicketList/>
         </Box>
+          <ProjectCommentComponent/>
+          </Flex>
       </Flex>
     </Flex>
   );

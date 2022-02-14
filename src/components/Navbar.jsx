@@ -60,15 +60,9 @@ export const Navbar = () => {
           </>
         )}
         {user && (
-          <Button
-            display={{ base: "none", md: "flex" }}
-            bgColor={"blue.400"}
-            color={"white"}
-            _hover={{ bg: "blue.500" }}
-            onClick={logout}
-          >
+          <Button colorScheme='red' variant='outline' _hover={{ bg: "red.50" }} onClick={logout}>
             Logout
-          </Button>
+        </Button>
         )}
       </HStack>
     </Flex>
