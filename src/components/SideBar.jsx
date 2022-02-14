@@ -97,9 +97,6 @@ const SidebarContent = ({ onClose, ...rest }) => {
           </NavItem>
         </ReachLink>
       ))}
-      <ReachLink to={"/"}>
-        <NavItem icon={AddIcon}>Add Project</NavItem>
-      </ReachLink>
       {user && <Button display={{base: "flex", md: "none"}}bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}} onClick={logout}>
           Logout
         </Button>}
