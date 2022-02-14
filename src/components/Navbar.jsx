@@ -22,6 +22,7 @@ export const Navbar = () => {
       bg={useColorModeValue("gray.50", "gray.800")}
       wrap="wrap"
       gap={{ base: "0px", md: "0px" }}
+      borderBottom="1px solid black"
     >
       <Flex
         align={"center"}

@@ -26,12 +26,15 @@ const PieChartComponent = (props) => {
       style={{
         fontSize: "8px",
       }}
+      viewBoxSize={[80,70]}
+      center={[45,35]}
+      animationDuration={"2000"}
       data={data}
-      radius={"25"}
+      radius={"23"}
       segmentsStyle={{ transition: "stroke .3s", cursor: "pointer" }}
       segmentsShift={(index) => (index === selected ? 1 : 1)}
       animate
-      label={({ dataEntry }) => dataEntry.value}
+      label={({ dataEntry }) => dataEntry.value===0 ? "" : dataEntry.value}
       labelStyle={{
         fill: "#fff",
         opacity: 0.75,

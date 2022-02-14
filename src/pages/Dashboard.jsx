@@ -13,8 +13,7 @@ const Dashboard = () => {
         <Navbar />
         <DashboardMetrics />
         <Flex mt={"20px"} justifyContent="center" gap={"100px"} wrap="wrap" px={{ base: 2, sm: 12, md: 1 }}>
-          <TicketBox title="Projects" />
-          <TicketBox title="Tickets" />
+          <TicketBox />
         </Flex>
       </Flex>
     </Flex>

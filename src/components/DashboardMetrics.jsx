@@ -32,22 +32,37 @@ const LabelComponent = (props) => {
 
 export const DashboardMetrics = () => {
   return (
-    <Flex direction={"column"} px={{ base: 2, sm: 12, md: 17 }} py="2">
+    <Flex direction={"column"} px={{ base: 2, sm: 12, md: 17 }} py="8">
       <chakra.h1 textAlign={"center"} fontSize={"4xl"} fontWeight={"bold"}>
-        Statistics
+        Project Statistics
       </chakra.h1>
       <Flex wrap={"wrap"} fontWeight={"bold"} fontSize="lg">
-        <Flex alignItems={"center"} align="center">
-          <PieChartComponent value1={10} value2={20} value3={25}/>
-          <LabelComponent labels={["Issue", "Bug", "Feature"]} />
+        <Flex alignItems={"center"} align="center" direction={"column"}>
+          <Flex alignItems={"center"} align="center">
+            <PieChartComponent value1={10} value2={20} value3={25} />
+            <LabelComponent labels={["Issue", "Bug", "Feature"]} />
+          </Flex>
+          <Text fontSize={"2xl"} fontWeight="light">
+            Tickets by type
+          </Text>
         </Flex>
-        <Flex alignItems={"center"} align="center">
-          <PieChartComponent value1={10} value2={20} value3={25}/>
-          <LabelComponent labels={["High", "Moderate", "Low"]} />
+        <Flex alignItems={"center"} align="center" direction={"column"}>
+          <Flex alignItems={"center"} align="center">
+            <PieChartComponent value1={10} value2={20} value3={25} />
+            <LabelComponent labels={["High", "Medium", "Low"]} />
+          </Flex>
+          <Text fontSize={"2xl"} fontWeight="light">
+            Tickets by priority
+          </Text>
         </Flex>
-        <Flex alignItems={"center"} align="center">
-          <PieChartComponent value1={10} value2={20} value3={25}/>
-          <LabelComponent labels={["Completed", "InProgress", "New"]} />
+        <Flex alignItems={"center"} align="center" direction={"column"}>
+          <Flex alignItems={"center"} align="center">
+            <PieChartComponent value1={10} value2={20} value3={25} />
+            <LabelComponent labels={["Completed", "InProgress", "New"]} />
+          </Flex>
+          <Text fontSize={"2xl"} fontWeight="light">
+            Ticket Status
+          </Text>
         </Flex>
       </Flex>
     </Flex>
