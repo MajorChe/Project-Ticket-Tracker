@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.svg";
-import { Link as ReachLink} from "react-router-dom";
-import { AddIcon } from '@chakra-ui/icons'
+import { Link as ReachLink } from "react-router-dom";
+import { AddIcon } from "@chakra-ui/icons";
 import {
   IconButton,
   Box,
@@ -15,19 +15,20 @@ import {
   Text,
   useDisclosure,
   Avatar,
+  Button,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiStar,
-  FiMenu,
-} from "react-icons/fi";
+import { FiHome, FiStar, FiSettings, FiMenu } from "react-icons/fi";
+
+import { GoIssueOpened } from "react-icons/go";
+import { DiCodeBadge } from "react-icons/di";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogout } from "../hooks/useLogout";
 
 const LinkItems = [
-  { name: "Project 1"},
-  { name: "Project 2"},
-  { name: "Project 3"},
-  { name: "Project 4"},
+  { name: "Projects", icon: DiCodeBadge },
+  { name: "Tickets", icon: GoIssueOpened },
+  { name: "Settings", icon: FiSettings },
+  { name: "Admin Panel", icon: FiSettings },
 ];
 
 const SideBar = () => {
@@ -59,10 +60,11 @@ const SideBar = () => {
       <Box ml={{ base: 0, md: 60 }}></Box>
     </Box>
   );
-}
+};
 
 const SidebarContent = ({ onClose, ...rest }) => {
-  const {user} = useAuthContext();
+  const { user } = useAuthContext();
+  const {logout} = useLogout();
   return (
     <Box
       bg={useColorModeValue("white", "gray.900")}
@@ -74,59 +76,71 @@ const SidebarContent = ({ onClose, ...rest }) => {
       {...rest}
       align="center"
     >
-      
-      <Flex h="10" alignItems="center" mx="8" justifyContent="space-between">
-        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
+      <Flex h="10" alignItems="center" mx="8" justifyContent="flex-end" mt={"2"}>
+        <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose}  border={"2px solid green"}/>
       </Flex>
-      <Avatar name='Avatar' src={user.photoURL} size="lg"/>
+      <Avatar name="Avatar" src={user.photoURL} size="lg" />
       <Flex h="20" alignItems="center" mx="8" justifyContent="center">
-        <Text fontSize={"xl"}>Welcome, <b>{user.displayName}</b></Text>
+        <Text fontSize={"lg"}>
+          Welcome, <b>{user.displayName}</b>
+        </Text>
       </Flex>
-      <ReachLink to={"/"}><NavItem icon={FiHome}>Dashboard</NavItem></ReachLink>
+      <ReachLink to={"/"}>
+        <NavItem icon={FiHome}>Dashboard</NavItem>
+      </ReachLink>
       {LinkItems.map((link) => (
-        <ReachLink key={link.name} to={"/"}> {/* add route */}
-        <NavItem icon={FiStar} area="/signup">
-          {link.name}
-        </NavItem>
+        <ReachLink key={link.name} to={"/"}>
+          {" "}
+          {/* add route */}
+          <NavItem icon={link.icon} area="/signup">
+            {link.name}
+          </NavItem>
         </ReachLink>
       ))}
-      <ReachLink to={"/"}><NavItem icon={AddIcon}>Add Project</NavItem></ReachLink>
+      <ReachLink to={"/"}>
+        <NavItem icon={AddIcon}>Add Project</NavItem>
+      </ReachLink>
+      {user && <Button display={{base: "flex", md: "none"}}bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}} onClick={logout}>
+          Logout
+        </Button>}
     </Box>
   );
 };
 
 const NavItem = ({ icon, area, children, ...rest }) => {
   return (
-        <Flex
-          align="center"
-          fontSize={"xl"}
-          p="4"
-          mx="4"
-          borderRadius="lg"
-          role="group"
-          cursor="pointer"
-          _hover={{
-            bg: "#4299e1",
+    <Flex
+      align="center"
+      fontSize={"xl"}
+      p="4"
+      mx="4"
+      borderRadius="lg"
+      role="group"
+      cursor="pointer"
+      _hover={{
+        bg: "#4299e1",
+        color: "white",
+      }}
+      {...rest}
+    >
+      {icon && (
+        <Icon
+          mr="4"
+          fontSize="16"
+          _groupHover={{
             color: "white",
           }}
-          {...rest}
-        >
-          {icon && (
-            <Icon
-              mr="4"
-              fontSize="16"
-              _groupHover={{
-                color: "white",
-              }}
-              as={icon}
-            />
-          )}
-          {children}
-        </Flex>
+          as={icon}
+        />
+      )}
+      {children}
+    </Flex>
   );
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const { user } = useAuthContext();
+  const {logout} = useLogout();
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -153,9 +167,11 @@ const MobileNav = ({ onOpen, ...rest }) => {
           Project-Ticket-Tracker
         </Text>
       </ReachLink>
+      {user && <Button display={{base: "flex", md: "none"}}bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}} onClick={logout}>
+          Logout
+        </Button>}
     </Flex>
   );
 };
-
 
 export default SideBar;

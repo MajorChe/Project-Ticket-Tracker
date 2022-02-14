@@ -13,47 +13,63 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
 export const Navbar = () => {
-  const {user} = useAuthContext();
-  const {logout} = useLogout();
+  const { user } = useAuthContext();
+  const { logout } = useLogout();
   return (
     <Flex
       justifyContent={{ base: "center", md: "space-between" }}
-      p="30px"
+      p={{ base: "0px", md: "25px" }}
       bg={useColorModeValue("gray.50", "gray.800")}
       wrap="wrap"
-      gap={{ base: "20px", md: "0px" }}
+      gap={{ base: "0px", md: "0px" }}
     >
       <Flex
         align={"center"}
-        letterSpacing="6px"
-        gap={{ base: "3px", md: "20px" }}
+        gap={{ base: "3px", md: "10px" }}
         wrap={"wrap"}
-        display={{base:"none", md: "flex"}}
+        display={{ base: "none", md: "flex" }}
       >
-        <Image src={logo} boxSize={{ base: "20px", md: "36px" }} />
+        <Image src={logo} boxSize={{ base: "0px", md: "36px" }} />
         <ReachLink to="/">
-          <Text fontWeight={"bold"} fontSize={{ base: "xs", md: "xl" }}>
+          <Text fontWeight={"bold"} fontSize={{ base: "xs", md: "2xl" }}>
             Project-Ticket-Tracker
           </Text>
         </ReachLink>
       </Flex>
       <HStack>
-        {!user && 
+        {!user && (
           <>
             <ReachLink to={"/login"}>
-            <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}}>
-              Login
-            </Button>
-          </ReachLink>
-          <ReachLink to={"/signup"}>
-            <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}}>
-              Signup
-            </Button>
-          </ReachLink>
-        </>}
-        {user && <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}} onClick={logout}>
-          Logout
-        </Button>}
+              <Button
+                bgColor={"blue.400"}
+                color={"white"}
+                _hover={{ bg: "blue.500" }}
+              >
+                Login
+              </Button>
+            </ReachLink>
+            <ReachLink to={"/signup"}>
+              <Button
+                bgColor={"blue.400"}
+                color={"white"}
+                _hover={{ bg: "blue.500" }}
+              >
+                Signup
+              </Button>
+            </ReachLink>
+          </>
+        )}
+        {user && (
+          <Button
+            display={{ base: "none", md: "flex" }}
+            bgColor={"blue.400"}
+            color={"white"}
+            _hover={{ bg: "blue.500" }}
+            onClick={logout}
+          >
+            Logout
+          </Button>
+        )}
       </HStack>
     </Flex>
   );
