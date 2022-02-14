@@ -1,5 +1,6 @@
 import { Avatar, Box, Button, Flex, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
+import { AddIcon } from '@chakra-ui/icons'
 
 const TicketBox = (props) => {
   return (
@@ -10,10 +11,12 @@ const TicketBox = (props) => {
       boxShadow={"2xl"}
       rounded={"md"}
       overflow={"hidden"}
+      height="600px"
+      overflowY={"scroll"}
     >
 
       <Box p={6}>
-        <Flex justifyContent={"space-between"}>
+        <Flex justifyContent={"space-between"} mb="20px">
           <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"} textAlign="center">
             {props.title}
           </Heading>
@@ -27,29 +30,30 @@ const TicketBox = (props) => {
               bg: 'blue.500',
             }}
             >
-            Add Project
+            <AddIcon/> &nbsp; Add Project
           </Button>
         </Flex>
 
-        <Stack direction={"row"} justify={"center"} spacing={6}>
-          <Stack spacing={0} align={"center"}>
+        <Stack direction={"row"} wrap="wrap" spacing={"8"}>
+          <Flex direction={"column"} gap={3} align={"center"}>
             <Text fontWeight={600}>Name</Text>
             <Text fontSize={"sm"} color={"gray.500"}>
-              Followers
+              Project 1
             </Text>
-          </Stack>
-          <Stack spacing={0} align={"center"}>
+          </Flex>
+          <Flex direction={"column"} gap={3} align={"center"} flex="1">
             <Text fontWeight={600}>Description</Text>
             <Text fontSize={"sm"} color={"gray.500"}>
-              Followers
+              Lorem ipsum dolor sit amet, consectetur adipisicing eyshairty
             </Text>
-          </Stack>
-          <Stack spacing={0} align={"center"}>
+          </Flex>
+          <Flex direction={"column"} gap={3} align={"center"}>
             <Text fontWeight={600}>Contributors</Text>
-            <Text fontSize={"sm"} color={"gray.500"}>
-              Followers
-            </Text>
-          </Stack>
+            <Flex gap={"3"}>
+            <Avatar size={"sm"} src='https://bit.ly/ryan-florence' />
+            <Avatar size={"sm"} src='https://bit.ly/ryan-florence' />
+            </Flex>
+          </Flex>
         </Stack>
       </Box>
     </Box>
