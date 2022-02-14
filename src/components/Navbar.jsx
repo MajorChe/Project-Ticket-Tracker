@@ -9,8 +9,12 @@ import {
 import { Link as ReachLink } from "react-router-dom";
 import React from "react";
 import logo from "../assets/logo.svg";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogout } from "../hooks/useLogout";
 
 export const Navbar = () => {
+  const {user} = useAuthContext();
+  const {logout} = useLogout();
   return (
     <Flex
       justifyContent={{ base: "center", md: "space-between" }}
@@ -34,19 +38,22 @@ export const Navbar = () => {
         </ReachLink>
       </Flex>
       <HStack>
-        <ReachLink to={"/login"}>
-          <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}}>
-            Login
-          </Button>
-        </ReachLink>
-        <ReachLink to={"/signup"}>
-          <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}}>
-            Signup
-          </Button>
-        </ReachLink>
-        <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}}>
+        {!user && 
+          <>
+            <ReachLink to={"/login"}>
+            <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}}>
+              Login
+            </Button>
+          </ReachLink>
+          <ReachLink to={"/signup"}>
+            <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}}>
+              Signup
+            </Button>
+          </ReachLink>
+        </>}
+        {user && <Button bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}} onClick={logout}>
           Logout
-        </Button>
+        </Button>}
       </HStack>
     </Flex>
   );

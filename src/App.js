@@ -1,25 +1,35 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 import { Flex, Heading, Text } from "@chakra-ui/react";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { Navbar } from "./components/Navbar";
 import SideBar from "./components/SideBar";
+import { useAuthContext } from "./hooks/useAuthContext";
+import Dashboard from "./pages/Dashboard";
 
-function App() {
+const App = () => {
+  const { user, loggedIn } = useAuthContext();
+  const PrivateRoutes = () => {
+    return user ? <Outlet /> : <Navigate to={"/login"} />;
+  };
+
   return (
     <>
-      <Flex direction={{ base: "column", md: "row" }}>
-        <SideBar />
+      {loggedIn && (
         <Flex direction={"column"} w="100%">
-          <Navbar />
+          {!user && <Navbar />}
           <Routes>
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+            {!user && <Route path="/signup" element={<Signup />} />}
+            {!user && <Route path="/login" element={<Login />} />}
+            <Route element={<PrivateRoutes />}>
+              <Route path="/" element={<Dashboard />} />
+            </Route>
+            <Route path="/*" element={<Navigate to="/" />} />
           </Routes>
         </Flex>
-      </Flex>
+      )}
     </>
   );
-}
+};
 
 export default App;

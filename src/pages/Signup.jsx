@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { Link as ReachLink } from "react-router-dom";
+import { Link as ReachLink, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { useSignup } from "../hooks/useSignup";
 import TextField from "../components/TextField";
@@ -19,6 +19,7 @@ import TextField from "../components/TextField";
 const Signup = () => {
   const { signup, error, isPending } = useSignup();
   const [image, setImage] = useState(undefined);
+  const navigate = useNavigate();
   return (
     <>
       <Formik
@@ -32,6 +33,7 @@ const Signup = () => {
           const vals = { ...values, avatar: image };
           actions.resetForm();
           signup(vals.name, vals.email, vals.password, vals.avatar);
+          navigate("/dashboard")
           console.log(vals);
         }}
       >

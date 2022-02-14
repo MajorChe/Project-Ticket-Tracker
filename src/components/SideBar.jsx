@@ -70,9 +70,11 @@ const SidebarContent = ({ onClose, ...rest }) => {
       h="full"
       {...rest}
     >
+      
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
+      <h1>hello</h1>
       <ReachLink to={"/"}><NavItem icon={FiHome}>Dashboard</NavItem></ReachLink>
       {LinkItems.map((link) => (
         <ReachLink key={link.name} to={"/"}> {/* add route */}
