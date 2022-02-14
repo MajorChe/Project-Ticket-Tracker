@@ -6,11 +6,11 @@ const theme = {
     global: {
       body: {
         margin: 0,
-        "fontFamily": "poppins",
+        "fontFamily": "system-ui sans-serif",
       },
 
       code: {
-        "fontFamily": "poppins",
+        "fontFamily": "system-ui sans-serif",
       },
     },
   },

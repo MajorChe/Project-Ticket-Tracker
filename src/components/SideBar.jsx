@@ -14,12 +14,14 @@ import {
   DrawerContent,
   Text,
   useDisclosure,
+  Avatar,
 } from "@chakra-ui/react";
 import {
   FiHome,
   FiStar,
   FiMenu,
 } from "react-icons/fi";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const LinkItems = [
   { name: "Project 1"},
@@ -60,6 +62,7 @@ const SideBar = () => {
 }
 
 const SidebarContent = ({ onClose, ...rest }) => {
+  const {user} = useAuthContext();
   return (
     <Box
       bg={useColorModeValue("white", "gray.900")}
@@ -69,12 +72,16 @@ const SidebarContent = ({ onClose, ...rest }) => {
       pos="fixed"
       h="full"
       {...rest}
+      align="center"
     >
       
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
+      <Flex h="10" alignItems="center" mx="8" justifyContent="space-between">
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      <h1>hello</h1>
+      <Avatar name='Avatar' src={user.photoURL} size="lg"/>
+      <Flex h="20" alignItems="center" mx="8" justifyContent="center">
+        <Text fontSize={"xl"}>Welcome, <b>{user.displayName}</b></Text>
+      </Flex>
       <ReachLink to={"/"}><NavItem icon={FiHome}>Dashboard</NavItem></ReachLink>
       {LinkItems.map((link) => (
         <ReachLink key={link.name} to={"/"}> {/* add route */}

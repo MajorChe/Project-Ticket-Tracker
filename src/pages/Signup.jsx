@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import { Link as ReachLink, useNavigate } from "react-router-dom";
+import { Link as ReachLink } from "react-router-dom";
 import * as Yup from "yup";
 import { useSignup } from "../hooks/useSignup";
 import TextField from "../components/TextField";
@@ -19,11 +19,10 @@ import TextField from "../components/TextField";
 const Signup = () => {
   const { signup, error, isPending } = useSignup();
   const [image, setImage] = useState(undefined);
-  const navigate = useNavigate();
   return (
     <>
       <Formik
-        initialValues={{ name: "", email: "", password: ""}}
+        initialValues={{ name: "", email: "", password: "" }}
         validationSchema={Yup.object().shape({
           name: Yup.string().required("name required!"),
           email: Yup.string().email().required("email required!"),
@@ -33,7 +32,6 @@ const Signup = () => {
           const vals = { ...values, avatar: image };
           actions.resetForm();
           signup(vals.name, vals.email, vals.password, vals.avatar);
-          navigate("/dashboard")
           console.log(vals);
         }}
       >
@@ -98,7 +96,7 @@ const Signup = () => {
                   type="password"
                 />
                 <Stack spacing={10} pt={2}>
-                  <Button
+                  {!isPending && <Button
                     loadingText="Submitting"
                     size="md"
                     bgColor={"blue.400"}
@@ -109,7 +107,19 @@ const Signup = () => {
                     type="submit"
                   >
                     Sign up
-                  </Button>
+                  </Button>}
+                  {isPending && (
+                    <Button
+                    loadingText="Submitting"
+                    size="md"
+                    bgColor={"blue.400"}
+                    color={"white"}
+                    _hover={{
+                      bg: "blue.500",
+                    }}
+                    disabled
+                  >Loading</Button>
+                  )}
                 </Stack>
                 <Stack pt={6}>
                   <Text align={"center"}>
