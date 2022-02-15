@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   projectTicketTrackerAuth,
   projectTicketTrackerStorage,
+  projectTicketTracker
 } from "../firebase/Config";
 import { useAuthContext } from "./useAuthContext";
 
@@ -30,10 +31,18 @@ export const useSignup = () => {
       const img = await projectTicketTrackerStorage.ref(uploadPath).put(avatar)
       const imgUrl = await img.ref.getDownloadURL()
 
+      //add display name and photoURL to user
       await response.user.updateProfile({
         displayName: name,
         photoURL: imgUrl,
       });
+      
+      //add user document to store user avatar, name and id
+      await projectTicketTracker.collection("users").doc(response.user.uid).set({
+        online:true,
+        displayName:name,
+        photoURL:imgUrl
+      })
 
       // dispatch login action type
       dispatch({ type: "LOGIN", payload: response.user });
