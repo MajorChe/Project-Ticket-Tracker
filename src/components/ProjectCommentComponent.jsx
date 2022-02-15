@@ -4,9 +4,9 @@ import React from 'react'
 const ProjectCommentComponent = () => {
   return (
     <Box
-          width={"450px"}
+          width={"350px"}
           marginX={{ base: "2", md: "12" }}
-          marginY={{ base: "2", md: "10" }}
+          marginY={{ base: "2", md: "2" }}
           p="5"
           bg={useColorModeValue("white", "gray.800")}
           boxShadow={"2xl"}

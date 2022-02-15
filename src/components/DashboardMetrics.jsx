@@ -32,7 +32,7 @@ const LabelComponent = (props) => {
 
 export const DashboardMetrics = () => {
   return (
-    <Flex direction={"column"} px={{ base: 2, sm: 12, md: 0 }}>
+    <Flex direction={"column"} px={{ base: 2, sm: 12, md: 0 }} mb="150px">
       <chakra.h1 textAlign={"center"} fontSize={"4xl"} fontWeight={"bold"}>
         Statistics
       </chakra.h1>

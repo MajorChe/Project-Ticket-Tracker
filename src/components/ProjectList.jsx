@@ -16,7 +16,6 @@ const ProjectList = (props) => {
       w={"full"}
       bg={useColorModeValue("white", "gray.800")}
       boxShadow={"2xl"}
-      border="2px solid #4299e1"
       rounded={"md"}
       overflow={"hidden"}
       height="400px"

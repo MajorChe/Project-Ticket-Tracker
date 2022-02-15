@@ -7,7 +7,6 @@ const TeamMembersComp = () => {
       width={"400px"}
       marginX={{ base: "2", md: "12" }}
       marginY={{ base: "2", md: "2" }}
-      bg={useColorModeValue("white", "gray.800")}
       rounded={"md"}
       overflow={"hidden"}
     >

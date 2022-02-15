@@ -17,7 +17,7 @@ import TicketList from "../components/TicketList";
 
 export const Project = () => {
   return (
-    <Flex direction={{ base: "column", md: "row" }}>
+    <Flex direction={{ base: "column", md: "row" }} bgColor={"gray.100"}>
       <SideBar />
       <Flex direction={"column"} w="100%">
         <Navbar />
@@ -28,9 +28,9 @@ export const Project = () => {
             quam?
           </Text>
         </Flex>
-        <Flex justifyContent={"start"} wrap="wrap">
+        <Flex justifyContent={"start"} wrap="wrap" mb={"150px"}>
         <Box
-          maxW={"800px"}
+          width={"900px"}
           marginX={{ base: "2", md: "10" }}
           marginY={{ base: "2", md: "10" }}
           p="6"
@@ -66,6 +66,9 @@ export const Project = () => {
           <ProjectCommentComponent/>
         </Flex>
       </Flex>
+      <Box as="footer" role="contentinfo"  left={"0"} bottom={"0"} width={"100%"} py="5" px={{ base: '4', md: '8' }} bg={"#bee3f8"} color={"black"}>
+        <Text align={"center"}>Created by Charit</Text>
+      </Box>
       </Flex>
     </Flex>
   );
