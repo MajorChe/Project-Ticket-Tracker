@@ -17,10 +17,13 @@ export const useLogin = () => {
 
       //checking the credentials
       const response = await projectTicketTrackerAuth.signInWithEmailAndPassword(email,password);
-      dispatch({ type: "LOGIN", payload: response.user });
 
       //settinge the status to true
       await projectTicketTracker.collection("users").doc(response.user.uid).update({ online:true });
+
+      //setting the state using by sending response.user obj through dispatch
+      dispatch({ type: "LOGIN", payload: response.user });
+
       //update state
       if (!isCancelled) {
         setIsPending(false);

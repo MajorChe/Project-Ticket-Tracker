@@ -39,6 +39,7 @@ export const useSignup = () => {
       
       //add user document to store user avatar, name and id
       await projectTicketTracker.collection("users").doc(response.user.uid).set({
+        userid:response.user.uid,
         online:true,
         displayName:name,
         photoURL:imgUrl
