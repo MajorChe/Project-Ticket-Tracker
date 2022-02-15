@@ -3,9 +3,19 @@ import React from "react";
 import { AddIcon } from '@chakra-ui/icons'
 import ProjectListItem from "./ProjectListItem";
 import AddProject from "./AddProject";
+import { useCollection } from "../hooks/useCollection";
 
 const ProjectList = (props) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const {documents, error} = useCollection("projects");
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  console.log(documents)
+
+  const projectList = documents ? documents.map((project,index) => {
+    return (
+        <ProjectListItem key={index} id={index + 1} data={project}/>
+    )
+  }) : null
+
   return (
     <>
     {/* project modal */}
@@ -42,17 +52,13 @@ const ProjectList = (props) => {
             <AddIcon/> &nbsp; Add Project
           </Button>
         </Flex>
-          <Flex direction={"row"} gap={3} textAlign={"center"} wrap="wrap" px="5">
-            <Text fontWeight={600} fontSize="2xl">Name</Text>
-            <Text fontWeight={600} fontSize="2xl" flex="1">Description</Text>
-            <Text fontWeight={600} fontSize="2xl">Contributors</Text>
+          <Flex direction={"row"} gap="5" justifyContent="space-between"  wrap="wrap" pl={4}>
+            <Text fontWeight={600} fontSize="lg" width={"18%"} align="start">Name</Text>
+            <Text fontWeight={600} fontSize="lg" width={"54%"} align="center">Description</Text>
+            <Text fontWeight={600} fontSize="lg" width={"18%"} align="end">Contributors</Text>
           </Flex>
           <Flex direction={"column"} gap={3} mt="20px">
-            <ProjectListItem id={"1"}/>
-            <Divider/>
-            <ProjectListItem id={"2"}/>
-            <Divider/>
-            <ProjectListItem id={"3"}/>
+            {projectList}
           </Flex>
       </Box>
     </Box>

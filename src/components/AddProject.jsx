@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,
   FormControl,
   FormLabel,
@@ -10,38 +11,29 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Select,
+  // Select,
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { timestamp } from "../firebase/Config";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCollection } from "../hooks/useCollection";
 import { useFireStore } from "../hooks/useFireStore";
+import Select from "react-select";
 
 const AddProject = (props) => {
   const {user} = useAuthContext();
   const { documents, error } = useCollection("users");
+  const {addDocument, response} = useFireStore("projects");
   const [projectName, setProjectName] = useState();
   const [projectDescription, setProjectDescription] = useState();
   const [team, setTeam] = useState({});
 
-  // storing the selected team members in an array with id
-  const handleChange = (event) => {
-    let value = Array.from(
-      event.target.selectedOptions,
-      (option) => option.value
-    );
-    setTeam({
-      options: value,
-    });
-  };
-
-  //looping over documnets to get user id and name for select dropdown
-  const Options = documents ? documents.map(userItem => {
-    return <option value={userItem.id} key={userItem.id}>{userItem.displayName===user.displayName? "You" : userItem.displayName}</option>
-  }) : null
+  const Options = documents ? documents.map(item => {
+    return ({value: item.displayName, id: item.userid, avatar: item.photoURL, label: item.displayName})
+  }) : null;
 
   return (
     <>
@@ -50,7 +42,13 @@ const AddProject = (props) => {
         onSubmit={() => {
           const vals = { projectName, projectDescription, team };
           console.log("these are vals", vals);
-          props.onClose()
+          addDocument({
+            projectName,
+            projectDescription,
+            team,
+            createdBy: user.uid
+          });
+          props.onClose();
 
         }}
       >
@@ -85,22 +83,13 @@ const AddProject = (props) => {
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Project Contributors</FormLabel>
-                <Select
-                  multiple
-                  style={{ height: "100px" }}
-                  name="team"
-                  onChange={handleChange}
-                  icon="false"
-                >
-                  {Options}
-                  {/* <option value="Ironman">Ironman</option>
-                  <option value="Thor">Thor</option>
-                  <option value="Hulk">Hulk</option>
-                  <option value="Thor">Thor</option>
-                  <option value="Hulk">Hulk</option>
-                  <option value="Thor">Thor</option>
-                  <option value="Hulk">Hulk</option> */}
-                </Select>
+                <Select 
+                  options={Options}
+                  onChange={setTeam}
+                  isMulti
+                  isSearchable
+                  maxMenuHeight={"180px"}
+                />
               </FormControl>
             </ModalBody>
 

@@ -1,19 +1,28 @@
-import { Avatar, Divider, Flex, Text } from "@chakra-ui/react";
+import { Avatar, AvatarBadge, Divider, Flex, Text, Tooltip } from "@chakra-ui/react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ProjectListItem = (props) => {
   const navigate = useNavigate();
+  const contributors = props.data.team.map(item => { 
+    return (
+      <Tooltip key={item.id} label={item.value} bg='blue.100' color='black'>
+        <Avatar size={"sm"} src={item.avatar}>
+          <AvatarBadge boxSize='1.25em' bg='green.500' />
+        </Avatar>
+      </Tooltip>
+      )
+  });
+
   return (
     <Flex direction={"row"} gap={3} textAlign={"center"} wrap="wrap" px="2">
       
-      <Text fontWeight={300} fontSize="lg" onClick={() => navigate(`/project/${props.id}`)} cursor="pointer" _hover={{color: "blue", fontWeight: "bold"}}>1. Project 1</Text>
-      <Text fontWeight={300} fontSize="md" flex="1" maxWidth={"80%"}>Lorem ipsum dolor sit jahamet consectetur adipisicing elit. Alias consequuntur magnam </Text>
+      <Text fontWeight={300} fontSize="sm" onClick={() => navigate(`/project/${props.id}`)} cursor="pointer" _hover={{color: "blue", fontWeight: "bold"}}>{props.id}. {props.data.projectName}</Text>
+      <Text fontWeight={300} fontSize="sm" flex="1">{props.data.projectDescription}</Text>
       <Flex gap={"3"} justifyContent="flex-start">
-        <Avatar size={"sm"} src='https://bit.ly/ryan-florence' />
-        <Avatar size={"sm"} src='https://bit.ly/ryan-florence' />
+        {contributors}
       </Flex>
-      
+      <Divider />
     </Flex>
   );
 };
