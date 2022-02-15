@@ -12,6 +12,7 @@ import React from "react";
 import { Navbar } from "../components/Navbar";
 import ProjectCommentComponent from "../components/ProjectCommentComponent";
 import SideBar from "../components/SideBar";
+import TeamMembersComp from "../components/TeamMembersComp";
 import TicketList from "../components/TicketList";
 
 export const Project = () => {
@@ -27,10 +28,10 @@ export const Project = () => {
             quam?
           </Text>
         </Flex>
-        <Flex justifyContent={"space-between"} wrap="wrap">
+        <Flex justifyContent={"start"} wrap="wrap">
         <Box
           maxW={"800px"}
-          marginX={{ base: "2", md: "20" }}
+          marginX={{ base: "2", md: "10" }}
           marginY={{ base: "2", md: "10" }}
           p="6"
           bg={useColorModeValue("white", "gray.800")}
@@ -60,8 +61,11 @@ export const Project = () => {
           {/* list of all tickets go below */}
           <TicketList/>
         </Box>
+        <Flex direction={"column"}>
+          <TeamMembersComp/>
           <ProjectCommentComponent/>
-          </Flex>
+        </Flex>
+      </Flex>
       </Flex>
     </Flex>
   );

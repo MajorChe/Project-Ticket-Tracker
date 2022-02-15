@@ -1,10 +1,15 @@
-import { Avatar, Box, Button, chakra, Divider, Flex, Heading, Stack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Avatar, Box, Button, chakra, Divider, Flex, Heading, Stack, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import { AddIcon } from '@chakra-ui/icons'
 import ProjectListItem from "./ProjectListItem";
+import AddProject from "./AddProject";
 
 const ProjectList = (props) => {
+  const { isOpen, onOpen, onClose } = useDisclosure()
   return (
+    <>
+    {/* project modal */}
+    <AddProject isOpen={isOpen} onClose={onClose}/>
     <Box
       maxW={"full"}
       margin="10"
@@ -32,6 +37,8 @@ const ProjectList = (props) => {
             _hover={{
               bg: 'blue.500',
             }}
+            // modal opens on click
+            onClick={onOpen}
             >
             <AddIcon/> &nbsp; Add Project
           </Button>
@@ -50,6 +57,7 @@ const ProjectList = (props) => {
           </Flex>
       </Box>
     </Box>
+    </>
   );
 };
 
