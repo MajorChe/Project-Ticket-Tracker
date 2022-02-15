@@ -38,7 +38,7 @@ export const Project = () => {
           boxShadow={"2xl"}
           rounded={"md"}
           overflow={"hidden"}
-          height="400px"
+          height="539px"
           overflowY={"scroll"}
         >
           <Flex justifyContent={"space-between"} mb="20px">
