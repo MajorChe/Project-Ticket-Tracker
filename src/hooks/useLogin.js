@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { projectTicketTrackerAuth } from "../firebase/Config";
+import { projectTicketTracker, projectTicketTrackerAuth } from "../firebase/Config";
 import { useAuthContext } from "./useAuthContext";
 
 export const useLogin = () => {
@@ -8,12 +8,19 @@ export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false);
 
   const { dispatch } = useAuthContext();
+
   const login = async (email,password) => {
     setError(null);
     setIsPending(true);
+    //logging in user
     try {
+
+      //checking the credentials
       const response = await projectTicketTrackerAuth.signInWithEmailAndPassword(email,password);
       dispatch({ type: "LOGIN", payload: response.user });
+
+      //settinge the status to true
+      await projectTicketTracker.collection("users").doc(response.user.uid).update({ online:true });
       //update state
       if (!isCancelled) {
         setIsPending(false);
