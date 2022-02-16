@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { projectTicketTracker } from "../firebase/Config";
+import { useAuthContext } from "./useAuthContext";
 
-export const useCollection = (collection, _query, _orderBy) => {
+export const useProjectDocs = (collection, userid, _query, _orderBy) => {
+  const { user } = useAuthContext();
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
 
@@ -27,7 +29,9 @@ export const useCollection = (collection, _query, _orderBy) => {
       (snapshot) => {
         let results = [];
         snapshot.docs.forEach((doc) => {
-          results.push({ ...doc.data(), id: doc.id });
+          if(doc.data().assignedUsersID.includes(userid)) {
+            results.push({ ...doc.data(), id: doc.id });
+          }
         });
 
         setDocuments(results);

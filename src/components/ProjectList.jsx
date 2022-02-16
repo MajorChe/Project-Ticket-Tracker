@@ -1,17 +1,16 @@
-import { Avatar, Box, Button, chakra, Divider, Flex, Heading, Stack, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
-import React, { useCallback, useEffect, useState } from "react";
+import { Box, Button, Flex, Text, useDisclosure } from "@chakra-ui/react";
+import React from "react";
 import { AddIcon } from '@chakra-ui/icons'
 import ProjectListItem from "./ProjectListItem";
 import AddProject from "./AddProject";
-import { useCollection } from "../hooks/useCollection";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { projectTicketTracker } from "../firebase/Config";
+import { useProjectDocs } from "../hooks/useProjectDocs";
 
 const ProjectList = (props) => {
   const { user } = useAuthContext();
-  const {documents, error} = useCollection("projects");
+  //useProjectDocs is used to get projects specific to the user
+  const {documents,error} = useProjectDocs("projects",user.uid)
   const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <>
     {/* project modal */}
