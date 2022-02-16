@@ -34,7 +34,7 @@ export const DashboardMetrics = () => {
   return (
     <Flex direction={"column"} px={{ base: 2, sm: 12, md: 0 }} mb="150px">
       <chakra.h1 textAlign={"center"} fontSize={"4xl"} fontWeight={"bold"}>
-        Statistics
+        Ticket Statistics
       </chakra.h1>
       <Flex wrap={"wrap"} fontWeight={"bold"} fontSize="lg">
         <Flex alignItems={"center"} align="center" direction={"column"}>

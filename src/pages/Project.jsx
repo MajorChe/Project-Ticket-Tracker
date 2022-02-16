@@ -7,25 +7,36 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
+import { useParams } from "react-router-dom";
+import AddTicket from "../components/AddTicket";
 import { Navbar } from "../components/Navbar";
 import ProjectCommentComponent from "../components/ProjectCommentComponent";
 import SideBar from "../components/SideBar";
 import TeamMembersComp from "../components/TeamMembersComp";
 import TicketList from "../components/TicketList";
+import { useDoc } from "../hooks/useDoc";
 
 export const Project = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {id} = useParams();
+  const {document, error} = useDoc("projects",id);
+
   return (
     <Flex direction={{ base: "column", md: "row" }} bgColor={"gray.100"}>
+      <AddTicket isOpen={isOpen} onClose={onClose}/>
       <SideBar />
       <Flex direction={"column"} w="100%">
         <Navbar />
+        {error && <Text height={"605px"} textAlign="center" mt={"10"} fontSize="xl">{error}</Text>}
+        {!error && 
+        <>
         <Flex px={{base: "20px", md: "20"}} py={{base: "30px", md: "8"}} justifyContent={"space-between"} wrap="wrap" gap={{base: "30px", md: "0px"}}>
-          <Text fontSize={{base: "xl", md: "2xl"}}>Project Name</Text>
-          <Text fontSize={{base: "md", md: "2xl"}}>
-            Description Lorem ipsum dolor tempore cum accusantium similique iure
-            quam?
+          <Text fontSize={{base: "xl", md: "xl"}}>Project: {document ? document.projectName: null}</Text>
+          <Text fontSize={{base: "md", md: "xl"}}>
+          {document ? document.projectDescription: null}
           </Text>
         </Flex>
         <Flex justifyContent={"start"} wrap="wrap" mb={"150px"}>
@@ -34,7 +45,7 @@ export const Project = () => {
           marginX={{ base: "2", md: "10" }}
           marginY={{ base: "2", md: "10" }}
           p="6"
-          bg={useColorModeValue("white", "gray.800")}
+          // bg={useColorModeValue("white", "gray.800")}
           boxShadow={"2xl"}
           rounded={"md"}
           overflow={"hidden"}
@@ -54,6 +65,7 @@ export const Project = () => {
               _hover={{
                 bg: "blue.500",
               }}
+              onClick={onOpen}
             >
               <AddIcon /> &nbsp; Add Ticket
             </Button>
@@ -66,6 +78,7 @@ export const Project = () => {
           <ProjectCommentComponent/>
         </Flex>
       </Flex>
+      </>}
       <Box as="footer" role="contentinfo"  left={"0"} bottom={"0"} width={"100%"} py="5" px={{ base: '4', md: '8' }} bg={"#bee3f8"} color={"black"}>
         <Text align={"center"}>Created by Charit</Text>
       </Box>
