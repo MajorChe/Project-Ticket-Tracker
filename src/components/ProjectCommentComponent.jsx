@@ -1,36 +1,61 @@
 import {
+  Avatar,
+  AvatarBadge,
   Box,
   Button,
+  Divider,
   Flex,
   Input,
+  Text,
+  Tooltip,
   useColorModeValue,
+  VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { timestamp } from "../firebase/Config";
 import { Form, Formik } from "formik";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { useFireStore } from "../hooks/useFireStore";
 
 const ProjectCommentComponent = (props) => {
   const { user } = useAuthContext();
   const [newComment, setNewComment] = useState("");
   const { updateDocument, response } = useFireStore("projects");
-  console.log("for comments",props.document)
+
   return (
-    <Box
-      width={"350px"}
-      marginX={{ base: "2", md: "12" }}
-      marginY={{ base: "2", md: "2" }}
-      p="5"
-      bg={useColorModeValue("white", "gray.800")}
-      boxShadow={"2xl"}
-      rounded={"md"}
-      overflow={"hidden"}
-      height="500px"
-      overflowY={"scroll"}
-      display="flex"
-    >
+    <>
+      <Box
+        width={"350px"}
+        marginX={{ base: "2", md: "12" }}
+        marginY={{ base: "2", md: "2" }}
+        p="5"
+        bg={useColorModeValue("white", "gray.800")}
+        boxShadow={"2xl"}
+        rounded={"md"}
+        overflow={"hidden"}
+        height="500px"
+        overflowY={"scroll"}
+        display="flex"
+        flexDirection={"column"}
+      >
+        {/* {comments} */}
+        <Flex direction={"column"} gap="3">
+          {props.document.comments.length > 0 &&
+            props.document.comments.map((comment) => (
+              <Flex key={comment.id} gap="2">
+                <Tooltip
+                  label={comment.displayName}
+                  bg="blue.100"
+                  color="black"
+                >
+                  <Avatar size={"xs"} src={comment.photoURL} />
+                </Tooltip>
+                <Text>{comment.content}</Text>
+              </Flex>
+            ))}
+        </Flex>
+      </Box>
       <Formik
         initialValues={{ name: "", description: "" }}
         onSubmit={() => {
@@ -43,20 +68,22 @@ const ProjectCommentComponent = (props) => {
           };
           console.log(commentToAdd);
           updateDocument(props.document.id, {
-            comments:[...props.document.comments, commentToAdd]
+            comments: [...props.document.comments, commentToAdd],
           });
-          if(!response.error) {
+          if (!response.error) {
             setNewComment("");
           }
         }}
       >
-        <Flex as={Form} gap="3" alignSelf={"flex-end"}>
+        <Flex as={Form} gap="3" alignSelf={"center"}>
           <Input
             type={"text"}
             placeholder="Enter comment"
             onChange={(e) => setNewComment(e.target.value)}
             value={newComment}
             isRequired
+            bg={useColorModeValue("white", "gray.800")}
+            border="2px solid red"
           />
           <Button
             fontSize={"sm"}
@@ -74,7 +101,7 @@ const ProjectCommentComponent = (props) => {
           </Button>
         </Flex>
       </Formik>
-    </Box>
+    </>
   );
 };
 

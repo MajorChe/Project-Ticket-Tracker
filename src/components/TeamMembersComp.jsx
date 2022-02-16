@@ -23,7 +23,7 @@ const TeamMembersComp = (props) => {
 
   return (
     <Box
-      width={"400px"}
+      width={"350px"}
       marginX={{ base: "2", md: "12" }}
       marginY={{ base: "2", md: "2" }}
       rounded={"md"}
