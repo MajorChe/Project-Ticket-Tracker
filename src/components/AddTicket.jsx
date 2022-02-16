@@ -26,9 +26,11 @@ import React, { useEffect, useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useFireStore } from "../hooks/useFireStore";
 import Select from "react-select";
+import { useParams } from "react-router-dom";
 
 const AddTicket = (props) => {
   const { user } = useAuthContext();
+  const { id } = useParams();
   const { addDocument, response } = useFireStore("tickets");
   const [ticketName, setTicketName] = useState();
   const [ticketDescription, setTicketDescription] = useState();
@@ -80,6 +82,7 @@ const AddTicket = (props) => {
           });
           // ticketValues is for debugging
           const ticketVals = {
+            projectId: id,
             ticketName,
             ticketDescription,
             assignedDevs,
@@ -88,7 +91,7 @@ const AddTicket = (props) => {
             type,
             priority,
             status,
-            createdBy: user.uid,
+            author:user,
             comments:[]
           };
           console.log("these are vals", ticketVals);
@@ -110,6 +113,7 @@ const AddTicket = (props) => {
             return;
           }
           addDocument({
+            projectId: id,
             ticketName,
             ticketDescription,
             assignedDevs,
@@ -118,7 +122,8 @@ const AddTicket = (props) => {
             type,
             priority,
             status,
-            createdBy: user.uid,
+            authorData:[user.displayName,user.photoURL],
+            authorId:user.uid,
             comments:[]
           });
           props.onClose();

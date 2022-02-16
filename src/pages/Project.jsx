@@ -33,7 +33,7 @@ export const Project = () => {
       <Flex direction={"column"} w="100%">
         <Navbar />
         {error && <Text height={"605px"} textAlign="center" mt={"10"} fontSize="xl">{error}</Text>}
-        {/* displaying only when the document is available */}
+        {/* displaying only when the document is available and user is a contributor to the project*/}
         {document && 
         <>
         <Flex px={{base: "20px", md: "20"}} py={{base: "30px", md: "8"}} justifyContent={"space-between"} wrap="wrap" gap={{base: "30px", md: "0px"}}>
