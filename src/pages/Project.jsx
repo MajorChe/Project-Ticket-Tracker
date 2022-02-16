@@ -17,12 +17,14 @@ import ProjectCommentComponent from "../components/ProjectCommentComponent";
 import SideBar from "../components/SideBar";
 import TeamMembersComp from "../components/TeamMembersComp";
 import TicketList from "../components/TicketList";
+import { useAuthContext } from "../hooks/useAuthContext";
 import { useDoc } from "../hooks/useDoc";
 
 export const Project = () => {
+  const { user } = useAuthContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {id} = useParams();
-  const {document, error} = useDoc("projects",id);
+  const {document, error} = useDoc("projects",id, user.uid);
 
   return (
     <Flex direction={{ base: "column", md: "row" }} bgColor={"gray.100"}>
@@ -31,7 +33,8 @@ export const Project = () => {
       <Flex direction={"column"} w="100%">
         <Navbar />
         {error && <Text height={"605px"} textAlign="center" mt={"10"} fontSize="xl">{error}</Text>}
-        {!error && 
+        {/* displaying only when the document is available */}
+        {document && 
         <>
         <Flex px={{base: "20px", md: "20"}} py={{base: "30px", md: "8"}} justifyContent={"space-between"} wrap="wrap" gap={{base: "30px", md: "0px"}}>
           <Text fontSize={{base: "xl", md: "xl"}}>Project: {document ? document.projectName: null}</Text>
@@ -45,7 +48,6 @@ export const Project = () => {
           marginX={{ base: "2", md: "10" }}
           marginY={{ base: "2", md: "10" }}
           p="6"
-          // bg={useColorModeValue("white", "gray.800")}
           boxShadow={"2xl"}
           rounded={"md"}
           overflow={"hidden"}

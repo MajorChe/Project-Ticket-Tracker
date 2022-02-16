@@ -6,7 +6,8 @@ const theme = {
     global: {
       body: {
         margin: 0,
-        "fontFamily": "system-ui sans-serif",
+        // "fontFamily": "system-ui sans-serif",
+        "fontFamily": "Helvetica"
       },
 
       code: {
