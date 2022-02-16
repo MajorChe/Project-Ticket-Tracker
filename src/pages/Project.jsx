@@ -28,7 +28,7 @@ export const Project = () => {
 
   return (
     <Flex direction={{ base: "column", md: "row" }} bgColor={"gray.100"}>
-      <AddTicket isOpen={isOpen} onClose={onClose}/>
+      <AddTicket isOpen={isOpen} onClose={onClose} document={document}/>
       <SideBar />
       <Flex direction={"column"} w="100%">
         <Navbar />
@@ -76,7 +76,7 @@ export const Project = () => {
           <TicketList/>
         </Box>
         <Flex direction={"column"}>
-          <TeamMembersComp/>
+          <TeamMembersComp document={document}/>
           <ProjectCommentComponent/>
         </Flex>
       </Flex>

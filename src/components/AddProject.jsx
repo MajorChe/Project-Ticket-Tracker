@@ -62,7 +62,8 @@ const AddProject = (props) => {
               projectDescription,
               assignedUsers,
               createdBy: user.uid,
-              assignedUsersID
+              assignedUsersID,
+              comments:[]
             });
             props.onClose();
           }
