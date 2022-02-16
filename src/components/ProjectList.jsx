@@ -1,20 +1,16 @@
 import { Avatar, Box, Button, chakra, Divider, Flex, Heading, Stack, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { AddIcon } from '@chakra-ui/icons'
 import ProjectListItem from "./ProjectListItem";
 import AddProject from "./AddProject";
 import { useCollection } from "../hooks/useCollection";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { projectTicketTracker } from "../firebase/Config";
 
 const ProjectList = (props) => {
+  const { user } = useAuthContext();
   const {documents, error} = useCollection("projects");
   const { isOpen, onOpen, onClose } = useDisclosure();
-  console.log(documents)
-
-  const projectList = documents ? documents.map((project,index) => {
-    return (
-        <ProjectListItem key={index} id={index + 1} data={project}/>
-    )
-  }) : null
 
   return (
     <>
@@ -24,7 +20,6 @@ const ProjectList = (props) => {
       maxW={"full"}
       margin="10"
       w={"full"}
-      bg={useColorModeValue("white", "gray.800")}
       boxShadow={"2xl"}
       rounded={"md"}
       overflow={"hidden"}
@@ -58,7 +53,12 @@ const ProjectList = (props) => {
             <Text fontWeight={600} fontSize="lg" width={"18%"} align="end">Contributors</Text>
           </Flex>
           <Flex direction={"column"} gap={3} mt="20px">
-            {projectList}
+            {/* {projectList} */}
+            {documents ? documents.map((project,index) => {
+                return (
+                  <ProjectListItem key={index} id={index + 1} data={project}/>
+                )
+              }) : null}
           </Flex>
       </Box>
     </Box>

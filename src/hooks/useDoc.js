@@ -10,10 +10,13 @@ export const useDoc = (collection,docId) => {
     let ref = projectTicketTracker.collection(collection).doc(docId);
   
 
-    const unsubscribe = ref.onSnapshot(
-      (snapshot) => {
-        setDocument(snapshot.data());
-        setError(null);
+    const unsubscribe = ref.onSnapshot((snapshot) => {
+        if(snapshot.data()) {
+          setDocument({...snapshot.data(), id: snapshot.id});
+          setError(null);
+        } else {
+          setError("No such document exists")
+        }
       },
       (err) => {
         console.log(err);
@@ -23,7 +26,7 @@ export const useDoc = (collection,docId) => {
 
     //unsubscribe on mount
     return () => unsubscribe();
-  }, [collection]);
+  }, [collection,docId]);
 
   return { document, error };
 };

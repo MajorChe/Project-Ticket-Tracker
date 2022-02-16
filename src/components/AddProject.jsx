@@ -11,6 +11,7 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
+  Text,
   // Select,
   Textarea,
   useDisclosure,
@@ -25,14 +26,14 @@ import Select from "react-select";
 
 const AddProject = (props) => {
   const {user} = useAuthContext();
-  const { documents, error } = useCollection("users");
+  const { documents } = useCollection("users");
   const {addDocument, response} = useFireStore("projects");
   const [projectName, setProjectName] = useState();
   const [projectDescription, setProjectDescription] = useState();
-  const [team, setTeam] = useState({});
+  const [team, setTeam] = useState([]);
 
   const Options = documents ? documents.map(item => {
-    return ({value: item.displayName, id: item.userid, avatar: item.photoURL, label: item.displayName})
+    return ({value: item, label: item.displayName})
   }) : null;
 
   return (
@@ -42,13 +43,30 @@ const AddProject = (props) => {
         onSubmit={() => {
           const vals = { projectName, projectDescription, team };
           console.log("these are vals", vals);
-          addDocument({
-            projectName,
-            projectDescription,
-            team,
-            createdBy: user.uid
-          });
-          props.onClose();
+          const assignedUsers = team.map(user => {
+            return {
+              displayName: user.value.displayName,
+              photoURL: user.value.photoURL,
+              id: user.value.id
+            }
+          })
+          const assignedUsersID = team.map(user => {
+            return user.value.id;
+          })
+          if (team.length < 1)  { 
+            alert("Please assign team members");
+            return
+          } else {
+            addDocument({
+              projectName,
+              projectDescription,
+              assignedUsers,
+              createdBy: user.uid,
+              assignedUsersID
+            });
+            props.onClose();
+          }
+          
 
         }}
       >
@@ -85,7 +103,7 @@ const AddProject = (props) => {
                 <FormLabel>Project Contributors</FormLabel>
                 <Select 
                   options={Options}
-                  onChange={setTeam}
+                  onChange={(option) => setTeam(option)}
                   isMulti
                   isSearchable
                   maxMenuHeight={"180px"}
