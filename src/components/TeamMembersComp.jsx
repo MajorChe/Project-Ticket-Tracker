@@ -7,16 +7,10 @@ import {
   Text,
   Tooltip,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
-import { useDoc } from "../hooks/useDoc";
 
-const TeamMembersComp = () => {
-  const { id } = useParams();
-  const { document } = useDoc("projects", id);
-  console.log("this is doc",document);
-
-  const team = document
-    ? document.assignedUsers.map((member, index) => {
+const TeamMembersComp = (props) => {
+  const team = props.document
+    ? props.document.assignedUsers.map((member, index) => {
         return (
           <Tooltip key={index} label={member.displayName} bg="blue.100" color="black">
             <Avatar size={"sm"} src={member.photoURL}>
