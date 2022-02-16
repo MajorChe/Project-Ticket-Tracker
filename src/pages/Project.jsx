@@ -77,7 +77,7 @@ export const Project = () => {
         </Box>
         <Flex direction={"column"}>
           <TeamMembersComp document={document}/>
-          <ProjectCommentComponent/>
+          <ProjectCommentComponent document={document}/>
         </Flex>
       </Flex>
       </>}

@@ -1,4 +1,4 @@
-import { Avatar, AvatarBadge, Flex, HStack, Tag, Text, Tooltip } from "@chakra-ui/react";
+import { Avatar, AvatarBadge, Flex,Text, Tooltip } from "@chakra-ui/react";
 import React from "react";
 
 const TicketDetails = (props) => {
