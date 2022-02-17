@@ -44,7 +44,7 @@ export const Project = () => {
         </Flex>
         <Flex justifyContent={"start"} wrap="wrap" mb={"150px"}>
         <Box
-          width={"900px"}
+          width={"1000px"}
           marginX={{ base: "2", md: "10" }}
           marginY={{ base: "2", md: "10" }}
           p="6"

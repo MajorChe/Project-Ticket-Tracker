@@ -29,7 +29,7 @@ const TicketDetails = (props) => {
         </Flex>
         <Flex direction={"column"}>
           <Text fontWeight={600} textAlign="center">Type: </Text>
-          <Text px={"6"} align={"center"} fontWeight="bold" border="2px" borderRadius="full" bg={"#bee3f8"} color="black">{props.document.type}</Text>
+          <Text px={"6"} align={"center"} fontWeight="bold" border="2px" borderRadius="full" bg={"gray"} color="white">{props.document.type}</Text>
           </Flex>
       </Flex>
       <Flex gap={{ base: "2", md: "4" }} mt={{ base: "2", md: "10" }}>

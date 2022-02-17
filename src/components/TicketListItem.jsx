@@ -8,7 +8,6 @@ const TicketListItem = (props) => {
     <>
       <Flex
         direction={"row"}
-        gap={8}
         align={"center"}
         wrap="wrap"
         px={{ base: "1px", md: "2" }}
@@ -28,7 +27,7 @@ const TicketListItem = (props) => {
           fontWeight={300}
           fontSize="sm"
           flex="1"
-          maxWidth={{ base: "40%", md: "70%" }}
+          width={"50%"}
           textAlign="center"
         >
           {props.document.ticketDescription}

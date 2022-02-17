@@ -14,7 +14,7 @@ const TicketList = () => {
 
   return (
     <Flex direction={"column"}>
-      <Flex direction={"row"} gap={3} textAlign={"center"} wrap="wrap" px="5">
+      <Flex direction={"row"} gap={3} textAlign={"center"} wrap="wrap" px="2">
         <Text fontWeight={500} fontSize="lg">Name</Text>
         <Text fontWeight={500} fontSize="lg" flex="1">Description</Text>
         <Text fontWeight={500} fontSize="lg">Author</Text>
