@@ -77,6 +77,7 @@ export const Project = () => {
         </Box>
         <Flex direction={"column"}>
           <TeamMembersComp document={doc}/>
+          <Text textAlign={"center"} fontSize="lg">Project comments</Text>
           <ProjectCommentComponent document={doc}/>
         </Flex>
       </Flex>

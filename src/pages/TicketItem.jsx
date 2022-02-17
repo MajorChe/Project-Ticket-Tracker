@@ -1,6 +1,7 @@
-import { Box, Button, Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, useColorModeValue, useDisclosure } from "@chakra-ui/react";
 import React from "react";
 import { useParams } from "react-router-dom";
+import EditTicket from "../components/EditTicket";
 import { Navbar } from "../components/Navbar";
 import SideBar from "../components/SideBar";
 import TicketCommentComp from "../components/TicketCommentComp";
@@ -10,6 +11,7 @@ import { useTicketDoc } from "../hooks/useTicketDoc";
 const TicketItem = () => {
   const { id } = useParams();
   const { document, error } = useTicketDoc("tickets", id);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Flex direction={{ base: "column", md: "row" }} bgColor={"gray.100"}>
       <SideBar />
@@ -18,6 +20,7 @@ const TicketItem = () => {
         {error && <Text height={"605px"} textAlign="center" mt={"10"} fontSize="xl">{error}</Text>}
         {document && (
           <>
+          <EditTicket isOpen={isOpen} onClose={onClose}/>
             <Flex
               px={{ base: "20px", md: "20" }}
               py={{ base: "30px", md: "5" }}
@@ -27,7 +30,7 @@ const TicketItem = () => {
             >
               <Text fontSize={{ base: "xl", md: "3xl" }}> Ticket Details</Text>
             </Flex>
-            <Flex justifyContent={"space-between"} wrap="wrap" mb="50px">
+            <Flex justifyContent={"space-around"} wrap="wrap" mb="50px">
               <Box
                 width={"800px"}
                 marginX={{ base: "2", md: "20" }}
@@ -51,6 +54,7 @@ const TicketItem = () => {
                     _hover={{
                       bg: "blue.500",
                     }}
+                    onClick={onOpen}
                   >
                     Edit
                   </Button>
@@ -69,7 +73,10 @@ const TicketItem = () => {
                 </Flex>
                 <TicketDetails document={document}/>
               </Box>
+              <Flex direction={"column"}>
+              <Text align={"center"} fontSize="lg">Ticket Comments</Text>
               <TicketCommentComp document={document}/>
+              </Flex>
             </Flex>
           </>
         )}
