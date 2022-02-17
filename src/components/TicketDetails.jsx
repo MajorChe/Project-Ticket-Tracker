@@ -8,9 +8,11 @@ const TicketDetails = (props) => {
         <Text fontWeight={600} fontSize="lg">Description: </Text>
         <Text>{props.document.ticketDescription}</Text>
       </Flex>
-      <Flex gap={{ base: "2", md: "4" }} mt={{ base: "2", md: "5" }} >
+      <Flex gap={{ base: "2", md: "4" }} mt={{ base: "2", md: "5" }} align="center">
         <Text fontWeight={600} fontSize="lg">Author: </Text>
-        <Text>{props.document.authorData[0]}</Text>
+        <Text flexGrow={1}>{props.document.authorData[0]}</Text>
+        <Text fontWeight={600} fontSize="lg">Project Name: </Text>
+        {/* <Text>{props.document.project.projectName}</Text> */}
       </Flex>
       <Flex justifyContent={"space-between"} mt={{ base: "2", md: "10" }} px="10">
         <Flex direction={"column"}>

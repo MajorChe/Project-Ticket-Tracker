@@ -10,7 +10,6 @@ import { useTicketDoc } from "../hooks/useTicketDoc";
 const TicketItem = () => {
   const { id } = useParams();
   const { document, error } = useTicketDoc("tickets", id);
-  console.log("hello", document);
   return (
     <Flex direction={{ base: "column", md: "row" }} bgColor={"gray.100"}>
       <SideBar />

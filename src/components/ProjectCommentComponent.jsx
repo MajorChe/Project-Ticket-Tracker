@@ -17,6 +17,7 @@ import { timestamp } from "../firebase/Config";
 import { Form, Formik } from "formik";
 import { v4 as uuidv4 } from "uuid";
 import { useFireStore } from "../hooks/useFireStore";
+import Moment from "react-moment";
 
 const ProjectCommentComponent = (props) => {
   const { user } = useAuthContext();
@@ -43,16 +44,25 @@ const ProjectCommentComponent = (props) => {
         <Flex direction={"column"} gap="3">
           {props.document.comments.length > 0 &&
             props.document.comments.map((comment) => (
-              <Flex key={comment.id} gap="2">
-                <Tooltip
-                  label={comment.displayName}
-                  bg="blue.100"
-                  color="black"
-                >
-                  <Avatar size={"xs"} src={comment.photoURL} />
-                </Tooltip>
-                <Text>{comment.content}</Text>
-              </Flex>
+              <Box key={comment.id}>
+                <Flex gap="2">
+                  <Tooltip
+                    label={comment.displayName}
+                    bg="blue.100"
+                    color="black"
+                  >
+                    <Avatar size={"xs"} src={comment.photoURL} />
+                  </Tooltip>
+                  <Text flexGrow={1}>{comment.content}</Text>
+                  <Text fontSize={"sm"} fontStyle="italic">
+                    <Moment fromNow unix>
+                      {comment.createdAt.seconds}
+                    </Moment>
+                  </Text>
+                </Flex>
+                <Divider />
+                <Divider />
+              </Box>
             ))}
         </Flex>
       </Box>

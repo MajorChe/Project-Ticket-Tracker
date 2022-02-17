@@ -27,10 +27,12 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useFireStore } from "../hooks/useFireStore";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
+import { useDoc } from "../hooks/useDoc";
 
 const AddTicket = (props) => {
   const { user } = useAuthContext();
   const { id } = useParams();
+  const { doc } = useDoc("projects",id,user.uid)
   const { addDocument, response } = useFireStore("tickets");
   const [ticketName, setTicketName] = useState();
   const [ticketDescription, setTicketDescription] = useState();
@@ -81,20 +83,20 @@ const AddTicket = (props) => {
             return dev.value.id;
           });
           // ticketValues is for debugging
-          const ticketVals = {
-            projectId: id,
-            ticketName,
-            ticketDescription,
-            assignedDevs,
-            assignedDevsID,
-            timeEstimate,
-            type,
-            priority,
-            status,
-            author:user,
-            comments:[]
-          };
-          console.log("these are vals", ticketVals);
+          // const ticketVals = {
+          //   projectId: id,
+          //   ticketName,
+          //   ticketDescription,
+          //   assignedDevs,
+          //   assignedDevsID,
+          //   timeEstimate,
+          //   type,
+          //   priority,
+          //   status,
+          //   author:user,
+          //   comments:[]
+          // };
+          // console.log("these are vals", ticketVals);
 
           if (assignedDevs.length < 1) {
             alert("Please assign devs");
@@ -113,7 +115,7 @@ const AddTicket = (props) => {
             return;
           }
           addDocument({
-            projectId: id,
+            project: doc,
             ticketName,
             ticketDescription,
             assignedDevs,

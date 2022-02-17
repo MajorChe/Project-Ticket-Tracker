@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { projectTicketTracker } from "../firebase/Config";
 
 export const useDoc = (collection,docId,userid) => {
-  const [document, setDocument] = useState(null);
+  const [doc, setDoc] = useState(null);
   const [error, setError] = useState(null);
 
 
@@ -12,10 +12,10 @@ export const useDoc = (collection,docId,userid) => {
 
     const unsubscribe = ref.onSnapshot((snapshot) => {
         if(snapshot.data() && snapshot.data().assignedUsersID.includes(userid)) {
-          setDocument({...snapshot.data(), id: snapshot.id});
+          setDoc({...snapshot.data(), id: snapshot.id});
           setError(null);
         } else {
-          setDocument(null);
+          setDoc(null);
           setError("No such document exists")
         }
       },
@@ -29,5 +29,5 @@ export const useDoc = (collection,docId,userid) => {
     return () => unsubscribe();
   }, [collection,docId,userid]);
 
-  return { document, error };
+  return { doc, error };
 };

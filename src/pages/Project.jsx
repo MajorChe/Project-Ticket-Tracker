@@ -24,22 +24,22 @@ export const Project = () => {
   const { user } = useAuthContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const {id} = useParams();
-  const {document, error} = useDoc("projects",id, user.uid);
+  const {doc, error} = useDoc("projects",id, user.uid);
 
   return (
     <Flex direction={{ base: "column", md: "row" }} bgColor={"gray.100"}>
-      <AddTicket isOpen={isOpen} onClose={onClose} document={document}/>
+      <AddTicket isOpen={isOpen} onClose={onClose} document={doc}/>
       <SideBar />
       <Flex direction={"column"} w="100%">
         <Navbar />
         {error && <Text height={"605px"} textAlign="center" mt={"10"} fontSize="xl">{error}</Text>}
         {/* displaying only when the document is available and user is a contributor to the project*/}
-        {document && 
+        {doc && 
         <>
         <Flex px={{base: "20px", md: "20"}} py={{base: "30px", md: "8"}} justifyContent={"space-between"} wrap="wrap" gap={{base: "30px", md: "0px"}}>
-          <Text fontSize={{base: "xl", md: "xl"}}>Project: {document ? document.projectName: null}</Text>
+          <Text fontSize={{base: "xl", md: "xl"}}>Project: {doc? doc.projectName: null}</Text>
           <Text fontSize={{base: "md", md: "xl"}}>
-          {document ? document.projectDescription: null}
+          {doc ? doc.projectDescription: null}
           </Text>
         </Flex>
         <Flex justifyContent={"start"} wrap="wrap" mb={"150px"}>
@@ -76,8 +76,8 @@ export const Project = () => {
           <TicketList/>
         </Box>
         <Flex direction={"column"}>
-          <TeamMembersComp document={document}/>
-          <ProjectCommentComponent document={document}/>
+          <TeamMembersComp document={doc}/>
+          <ProjectCommentComponent document={doc}/>
         </Flex>
       </Flex>
       </>}
