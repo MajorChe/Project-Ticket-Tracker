@@ -69,7 +69,7 @@ const TicketItem = () => {
                 </Flex>
                 <TicketDetails document={document}/>
               </Box>
-              <TicketCommentComp />
+              <TicketCommentComp document={document}/>
             </Flex>
           </>
         )}
