@@ -12,7 +12,7 @@ const TicketDetails = (props) => {
         <Text fontWeight={600} fontSize="lg">Author: </Text>
         <Text flexGrow={1}>{props.document.authorData[0]}</Text>
         <Text fontWeight={600} fontSize="lg">Project Name: </Text>
-        {/* <Text>{props.document.project.projectName}</Text> */}
+        <Text>{props.document.project.projectName}</Text>
       </Flex>
       <Flex justifyContent={"space-between"} mt={{ base: "2", md: "10" }} px="10">
         <Flex direction={"column"}>
@@ -29,7 +29,7 @@ const TicketDetails = (props) => {
         </Flex>
         <Flex direction={"column"}>
           <Text fontWeight={600} textAlign="center">Type: </Text>
-          <Text px={"6"} align={"center"} fontWeight="bold" border="2px" borderRadius="full" bg={"#bee3f8"} color="black">{props.document.status}</Text>
+          <Text px={"6"} align={"center"} fontWeight="bold" border="2px" borderRadius="full" bg={"#bee3f8"} color="black">{props.document.type}</Text>
           </Flex>
       </Flex>
       <Flex gap={{ base: "2", md: "4" }} mt={{ base: "2", md: "10" }}>

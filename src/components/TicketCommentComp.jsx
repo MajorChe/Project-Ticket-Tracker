@@ -53,8 +53,8 @@ const TicketCommentComp = (props) => {
                   >
                     <Avatar size={"xs"} src={comment.photoURL} />
                   </Tooltip>
-                  <Text flexGrow={1}>{comment.content}</Text>
-                  <Text fontSize={"sm"} fontStyle="italic">
+                  <Text flexGrow={1} fontSize={"xs"}>{comment.content}</Text>
+                  <Text fontSize={"xs"} fontStyle="italic">
                     <Moment fromNow unix>
                       {comment.createdAt.seconds}
                     </Moment>

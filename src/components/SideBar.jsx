@@ -26,9 +26,8 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
 const LinkItems = [
-  { name: "Tickets", icon: DiCodeBadge, link: "/project"},
+  { name: "Tickets", icon: DiCodeBadge, link: "/tickets"},
   { name: "Settings", icon: FiSettings, link: "/project" },
-  { name: "Admin", icon: FiSettings, link: "/project" },
 ];
 
 const SideBar = () => {
@@ -98,7 +97,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
           </NavItem>
         </ReachLink>
       ))}
-      {user && <Button display={{base: "flex", md: "none"}}bgColor={"blue.400"} color={"white"} _hover={{ bg: "blue.500"}} onClick={logout}>
+      {user && <Button display={{base: "flex", md: "flex"}} mt="3" colorScheme="red"
+      variant="outline" onClick={logout}>
           Logout
         </Button>}
     </Box>
@@ -165,15 +165,6 @@ const MobileNav = ({ onOpen, ...rest }) => {
           Project-Ticket-Tracker
         </Text>
       </ReachLink>
-      {user && 
-      <Button
-      display={{ base: "flex", md: "none" }}
-      colorScheme="red"
-      variant="outline"
-      onClick={logout}
-    >
-      Logout
-    </Button>}
     </Flex>
   );
 };

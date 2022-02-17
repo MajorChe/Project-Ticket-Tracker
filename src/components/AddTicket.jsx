@@ -115,6 +115,7 @@ const AddTicket = (props) => {
             return;
           }
           addDocument({
+            projectId:id,
             project: doc,
             ticketName,
             ticketDescription,

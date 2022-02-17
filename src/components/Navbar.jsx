@@ -59,16 +59,6 @@ export const Navbar = () => {
             </ReachLink>
           </>
         )}
-        {user && (
-          <Button
-            display={{ base: "none", md: "flex" }}
-            colorScheme="red"
-            variant="outline"
-            onClick={logout}
-          >
-            Logout
-          </Button>
-        )}
       </HStack>
     </Flex>
   );
