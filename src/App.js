@@ -8,6 +8,8 @@ import Dashboard from "./pages/Dashboard";
 import { Project } from "./pages/Project";
 import TicketItem from "./pages/TicketItem";
 import TicketsList from "./pages/TicketsList";
+import Settings from "./pages/Settings";
+import { Users } from "./pages/Users";
 
 const App = () => {
   const { user, loggedIn } = useAuthContext();
@@ -25,6 +27,8 @@ const App = () => {
             {!user && <Route path="/login" element={<Login />} />}
             <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/users" element={<Users />} />
               <Route path="/tickets" element={<TicketsList />} />
               <Route path="/project/:id" element={<Project />} />
               <Route path="/ticket/:id" element={<TicketItem />} />

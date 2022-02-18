@@ -20,14 +20,15 @@ import {
 } from "@chakra-ui/react";
 import { FiHome, FiStar, FiSettings, FiMenu } from "react-icons/fi";
 
-import { GoIssueOpened } from "react-icons/go";
+import { FiUsers } from "react-icons/fi";
 import { DiCodeBadge } from "react-icons/di";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogout } from "../hooks/useLogout";
 
 const LinkItems = [
   { name: "Tickets", icon: DiCodeBadge, link: "/tickets"},
-  { name: "Settings", icon: FiSettings, link: "/project" },
+  { name: "Users", icon: FiUsers, link: "/users" },
+  { name: "Settings", icon: FiSettings, link: "/settings" },
 ];
 
 const SideBar = () => {

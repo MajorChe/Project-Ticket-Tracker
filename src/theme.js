@@ -8,8 +8,8 @@ const theme = {
         margin: 0,
         // "fontFamily": "system-ui sans-serif",
         "fontFamily": "Helvetica",
-        "scrollbar-width": "thin",
-        "scrollbar-color": "black #edf2f7",
+        "scrollbarWidth": "thin",
+        "scrollbarColor": "black #edf2f7",
         "*::-webkit-scrollbar": {
           "width": "12px",
         },
@@ -18,8 +18,8 @@ const theme = {
         },
         
         "*::-webkit-scrollbar-thumb" :{
-          "background-color": "black",
-          "border-radius": "20px",
+          "backgroundColor": "black",
+          "borderRadius": "20px",
           "border": "3px solid black",
         }
       },
