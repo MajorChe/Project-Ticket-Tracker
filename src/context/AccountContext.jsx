@@ -22,7 +22,7 @@ export const AccountContextProvider = ({ children }) => {
     loggedIn: false,
   });
 
-  console.log(state)
+  // console.log(state) to test the current logged in user
 
   useEffect(() => {
     const unsub = projectTicketTrackerAuth.onAuthStateChanged((user) => {

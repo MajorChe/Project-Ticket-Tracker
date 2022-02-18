@@ -5,7 +5,6 @@ import {
   Flex,
   Heading,
   HStack,
-  Link,
   Stack,
   Text,
   useColorModeValue,
@@ -15,7 +14,6 @@ import * as Yup from "yup";
 import TextField from "../components/TextField";
 import SideBar from "../components/SideBar";
 import { Navbar } from "../components/Navbar";
-import { useAuthContext } from "../hooks/useAuthContext";
 import { projectTicketTrackerAuth, projectTicketTrackerStorage } from "../firebase/Config";
 import { useFireStore } from "../hooks/useFireStore";
 import { useNavigate } from "react-router-dom";
@@ -49,7 +47,7 @@ const Settings = () => {
           const vals = { ...values, avatar: image };
           actions.resetForm();
           //update login goes here
-          const uploadPath = `thumbnails/${vals.name}/${vals.avatar.name}`
+          const uploadPath = `thumbnails/${user.uid}/${vals.avatar.name}`
           const img = await projectTicketTrackerStorage.ref(uploadPath).put(vals.avatar)
           const imgUrl = await img.ref.getDownloadURL()
           user.updateProfile({

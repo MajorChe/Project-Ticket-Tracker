@@ -3,7 +3,7 @@ import {
   Flex,
   HStack,
   Image,
-  Text,
+  Text,Box,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
@@ -36,7 +36,7 @@ export const Navbar = () => {
           </Text>
         </ReachLink>
       </Flex>
-      <HStack>
+      <HStack display={{ base: "none", md: "flex" }}>
         {!user && (
           <>
             <ReachLink to={"/login"}>

@@ -50,19 +50,19 @@ const TicketsList = () => {
             <Tbody>
             {documents ? documents.map((item,index) => {
               return (
-                <Tr cursor="pointer" onClick={() => navigate(`/ticket/${item.id}`)} _hover={{color: "blue"}}>
+                <Tr key={index} cursor="pointer" onClick={() => navigate(`/ticket/${item.id}`)} _hover={{color: "blue"}}>
                   <Td>{index + 1}. {item.ticketName}</Td>
                   <Td>{item.ticketDescription}</Td>
                   <Td>{item.project.projectName}</Td>
                 </Tr>
               )
             }): null}
-            </Tbody>
-          <Text fontSize={"lg"} mb="5" fontWeight={"bold"} mt="10">Assigned to you:</Text>
-            <Tbody>
+            <Tr>
+              <Td fontSize={"lg"} fontWeight="bold">Assigned to you: </Td>
+            </Tr>
             {tickets ? tickets.map((item,index) => {
               return (
-                <Tr cursor="pointer" onClick={() => navigate(`/ticket/${item.id}`)} _hover={{color: "blue"}}>
+                <Tr key={index} cursor="pointer" onClick={() => navigate(`/ticket/${item.id}`)} _hover={{color: "blue"}}>
                   <Td>{index + 1}. {item.ticketName}</Td>
                   <Td>{item.ticketDescription}</Td>
                   <Td>{item.project.projectName}</Td>

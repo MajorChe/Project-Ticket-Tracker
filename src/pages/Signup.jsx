@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   HStack,
+  Image,
   Link,
   Stack,
   Text,
@@ -15,12 +16,21 @@ import { Link as ReachLink } from "react-router-dom";
 import * as Yup from "yup";
 import { useSignup } from "../hooks/useSignup";
 import TextField from "../components/TextField";
+import logo from "../assets/logo.svg";
 
 const Signup = () => {
   const { signup, error, isPending } = useSignup();
   const [image, setImage] = useState(undefined);
   return (
     <>
+    <HStack display={{ base: "flex", md: "none" }} bg={useColorModeValue("blue.100", "gray.800")} p="20px" justifyContent={"center"}>
+      <Image src={logo} boxSize={{ base: "20px", md: "36px" }} />
+        <ReachLink to="/">
+          <Text fontWeight={"bold"} fontSize={{ base: "2xl", md: "2xl" }}>
+            Project-Ticket-Tracker
+          </Text>
+        </ReachLink>
+      </HStack>
       <Formik
         initialValues={{ name: "", email: "", password: "" }}
         validationSchema={Yup.object().shape({
