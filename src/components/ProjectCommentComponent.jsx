@@ -1,6 +1,5 @@
 import {
   Avatar,
-  AvatarBadge,
   Box,
   Button,
   Divider,
@@ -9,7 +8,6 @@ import {
   Text,
   Tooltip,
   useColorModeValue,
-  VStack,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";

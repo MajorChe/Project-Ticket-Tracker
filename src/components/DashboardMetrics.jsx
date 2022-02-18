@@ -1,5 +1,5 @@
-import { Center, chakra, Flex, Icon, Text, VStack } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { Center, chakra, Flex, Icon, Text } from "@chakra-ui/react";
+import React from "react";
 import PieChartComponent from "./PieChartComponent";
 
 const CircleIcon = (props) => (

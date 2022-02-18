@@ -6,7 +6,6 @@ const theme = {
     global: {
       body: {
         margin: 0,
-        // "fontFamily": "system-ui sans-serif",
         "fontFamily": "Helvetica",
         "scrollbarWidth": "thin",
         "scrollbarColor": "black #edf2f7",

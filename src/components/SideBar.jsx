@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "../assets/logo.svg";
 import { Link as ReachLink } from "react-router-dom";
-import { AddIcon } from "@chakra-ui/icons";
 import {
   IconButton,
   Box,
@@ -16,9 +15,8 @@ import {
   useDisclosure,
   Avatar,
   Button,
-  Divider,
 } from "@chakra-ui/react";
-import { FiHome, FiStar, FiSettings, FiMenu } from "react-icons/fi";
+import { FiHome, FiSettings, FiMenu } from "react-icons/fi";
 
 import { FiUsers } from "react-icons/fi";
 import { DiCodeBadge } from "react-icons/di";

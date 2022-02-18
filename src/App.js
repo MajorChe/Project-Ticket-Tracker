@@ -1,5 +1,5 @@
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { Navbar } from "./components/Navbar";

@@ -17,12 +17,10 @@ import {
   NumberInput,
   NumberInputField,
   NumberInputStepper,
-  // Select,
   Textarea,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { Form, Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useFireStore } from "../hooks/useFireStore";
 import Select from "react-select";
@@ -82,21 +80,6 @@ const AddTicket = (props) => {
           const assignedDevsID = devs.map((dev) => {
             return dev.value.id;
           });
-          // ticketValues is for debugging
-          // const ticketVals = {
-          //   projectId: id,
-          //   ticketName,
-          //   ticketDescription,
-          //   assignedDevs,
-          //   assignedDevsID,
-          //   timeEstimate,
-          //   type,
-          //   priority,
-          //   status,
-          //   author:user,
-          //   comments:[]
-          // };
-          // console.log("these are vals", ticketVals);
 
           if (assignedDevs.length < 1) {
             alert("Please assign devs");

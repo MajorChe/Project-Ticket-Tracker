@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { projectTicketTracker } from "../firebase/Config";
 
 export const useTicketDoc = (collection,docId) => {

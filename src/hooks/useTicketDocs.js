@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { projectTicketTracker } from "../firebase/Config";
-import { useAuthContext } from "./useAuthContext";
 
 export const useTicketDocs = (collection, userid, _query, _orderBy) => {
   const [tickets, setTickets] = useState(null);

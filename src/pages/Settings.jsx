@@ -144,7 +144,22 @@ const Settings = () => {
         </Flex>
       </Formik>
       </Flex>
+      <Box
+          as="footer"
+          role="contentinfo"
+          left={"0"}
+          bottom={"0"}
+          width={"100%"}
+          mt="10"
+          py="5"
+          px={{ base: "4", md: "8" }}
+          bg={"#bee3f8"}
+          color={"black"}
+        >
+          <Text align={"center"}>Created by Charit</Text>
+        </Box>
       </Flex>
+      
       </Flex>
   );
 };

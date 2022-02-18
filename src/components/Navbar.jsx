@@ -3,18 +3,16 @@ import {
   Flex,
   HStack,
   Image,
-  Text,Box,
+  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
 import React from "react";
 import logo from "../assets/logo.svg";
 import { useAuthContext } from "../hooks/useAuthContext";
-import { useLogout } from "../hooks/useLogout";
 
 export const Navbar = () => {
   const { user } = useAuthContext();
-  const { logout } = useLogout();
   return (
     <Flex
       justifyContent={{ base: "center", md: "space-between" }}

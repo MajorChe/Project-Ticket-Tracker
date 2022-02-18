@@ -1,12 +1,9 @@
 import { AddIcon } from "@chakra-ui/icons";
 import {
-  Avatar,
   Box,
   Button,
   Flex,
-  Stack,
   Text,
-  useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
@@ -52,7 +49,6 @@ export const Project = () => {
           boxShadow={"2xl"}
           rounded={"md"}
           overflow={"hidden"}
-          // height="539px"
           height={{base:"600px" ,md:"400px"}}
           overflowY={"scroll"}
         >

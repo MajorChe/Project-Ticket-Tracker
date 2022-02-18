@@ -3,7 +3,6 @@ import { projectTicketTracker } from "../firebase/Config";
 import { useAuthContext } from "./useAuthContext";
 
 export const useProjectDocs = (collection, userid, _query, _orderBy) => {
-  const { user } = useAuthContext();
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
 

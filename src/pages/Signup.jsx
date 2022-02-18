@@ -6,7 +6,6 @@ import {
   Heading,
   HStack,
   Image,
-  Link,
   Stack,
   Text,
   useColorModeValue,
