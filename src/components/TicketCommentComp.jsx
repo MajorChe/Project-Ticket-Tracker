@@ -32,7 +32,7 @@ const TicketCommentComp = (props) => {
         mr={{base:"4",md:"none"}}
         marginY={{ base: "2", md: "2" }}
         p="5"
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("gray.100", "gray.800")}
         boxShadow={"2xl"}
         rounded={"md"}
         overflow={"hidden"}

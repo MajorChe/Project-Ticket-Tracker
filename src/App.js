@@ -3,12 +3,11 @@ import { Flex, Heading, Text } from "@chakra-ui/react";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { Navbar } from "./components/Navbar";
-import SideBar from "./components/SideBar";
 import { useAuthContext } from "./hooks/useAuthContext";
 import Dashboard from "./pages/Dashboard";
 import { Project } from "./pages/Project";
 import TicketItem from "./pages/TicketItem";
-import { UserTickets } from "./pages/UserTickets";
+import TicketsList from "./pages/TicketsList";
 
 const App = () => {
   const { user, loggedIn } = useAuthContext();
@@ -26,7 +25,7 @@ const App = () => {
             {!user && <Route path="/login" element={<Login />} />}
             <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Dashboard />} />
-              <Route path="/tickets" element={<UserTickets />} />
+              <Route path="/tickets" element={<TicketsList />} />
               <Route path="/project/:id" element={<Project />} />
               <Route path="/ticket/:id" element={<TicketItem />} />
             </Route>
