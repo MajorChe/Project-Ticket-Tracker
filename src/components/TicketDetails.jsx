@@ -7,17 +7,17 @@ const TicketDetails = (props) => {
       {/* Description  */}
       <Flex align={"center"} wrap="wrap">
         <Text fontWeight={600} fontSize="lg">Description: </Text>
-        <Text mt={"1"}>{props.document.ticketDescription}</Text>
+        <Text mt={{base:"0.5",md:"1"}}>{props.document.ticketDescription}</Text>
       </Flex>
       {/* Author and project */}
       <Flex align="center" wrap="wrap" justifyContent={{base:"start", md:"space-between"}} direction={{base:"column",md:"row"}} alignItems="start">
         <Flex gap={"3"} align="center">
         <Text fontWeight={600} fontSize="lg">Author: </Text>
-        <Text flexGrow={1} mt="1">{props.document.authorData[0]}</Text>
+        <Text flexGrow={1} mt={{base:"0.5",md:"1"}}>{props.document.authorData[0]}</Text>
         </Flex>
         <Flex align={"center"} gap="3">
         <Text fontWeight={600} fontSize={{base:"md",md:"lg"}}>Project: </Text>
-        <Text fontSize={{base:"md",md:"md"}} mt="1">{props.document.project.projectName}</Text>
+        <Text fontSize={{base:"md",md:"md"}} mt={{base:"0.5",md:"1"}}>{props.document.project.projectName}</Text>
         </Flex>
       </Flex>
       {/* Status,priority and type */}
