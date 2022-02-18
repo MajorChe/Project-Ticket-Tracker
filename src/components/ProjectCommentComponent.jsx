@@ -26,19 +26,20 @@ const ProjectCommentComponent = (props) => {
 
   return (
     <>
-      <Box
-        width={"350px"}
-        marginX={{ base: "2", md: "12" }}
-        marginY={{ base: "2", md: "2" }}
+      <Flex
+        width={{base:"none", md:"full"}}
+        marginX={{ base: "4", md: "12" }}
+        mr={{base:"4",md:"none"}}
+        marginY={{ base: "4", md: "2" }}
         p="5"
-        bg={useColorModeValue("white", "gray.800")}
+        bg={useColorModeValue("gray.100", "gray.800")}
         boxShadow={"2xl"}
         rounded={"md"}
         overflow={"hidden"}
         height="500px"
         overflowY={"scroll"}
-        display="flex"
         flexDirection={"column"}
+        
       >
         {/* {comments} */}
         <Flex direction={"column"} gap="3">
@@ -65,7 +66,7 @@ const ProjectCommentComponent = (props) => {
               </Box>
             ))}
         </Flex>
-      </Box>
+      </Flex>
       <Formik
         initialValues={{ name: "", description: "" }}
         onSubmit={() => {
@@ -85,7 +86,7 @@ const ProjectCommentComponent = (props) => {
           }
         }}
       >
-        <Flex as={Form} gap="3" alignSelf={"center"}>
+        <Flex as={Form} gap="3" alignSelf={"center"} ml={{base: "2", md:"12"}} align={"center"}>
           <Input
             type={"text"}
             placeholder="Enter comment"

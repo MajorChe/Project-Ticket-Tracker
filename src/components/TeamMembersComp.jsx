@@ -23,13 +23,15 @@ const TeamMembersComp = (props) => {
 
   return (
     <Box
-      width={"350px"}
       marginX={{ base: "2", md: "12" }}
       marginY={{ base: "2", md: "2" }}
       rounded={"md"}
       overflow={"hidden"}
+      display="flex"
+      justifyContent={{base:"center",md:"start"}}
+      wrap="wrap"
     >
-      <Flex justifyContent={"start"} mb="20px" gap={3}>
+      <Flex justifyContent={"start"} mb="20px" gap={3} wrap="wrap">
         <Text fontWeight={500}>Team Members: &nbsp;</Text>
         {team}
       </Flex>

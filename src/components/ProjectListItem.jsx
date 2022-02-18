@@ -15,15 +15,23 @@ const ProjectListItem = (props) => {
   });
 
   return (
-    <Flex direction={"row"} gap={3} textAlign={"center"} wrap="wrap" px="2">
-      
-      <Text fontWeight={300} fontSize="sm" onClick={() => navigate(`/project/${props.data.id}`)} cursor="pointer" _hover={{color: "blue", fontWeight: "bold"}}>{props.id}. {props.data.projectName}</Text>
-      <Text fontWeight={300} fontSize="sm" flex="1">{props.data.projectDescription}</Text>
-      <Flex gap={"3"} justifyContent="flex-start">
+    <>
+    <Flex direction={"row"} gap={3} wrap="wrap" px="2" textAlign={{md:"center"}}>
+      <Flex align={"center"} gap="2" width={{md:"18%"}}>
+        <Text display={{base:"flex", md:"none"}} fontWeight="bold">Name: </Text>
+        <Text fontWeight={300} fontSize="md" onClick={() => navigate(`/project/${props.data.id}`)} cursor="pointer" _hover={{color: "blue", fontWeight: "bold"}}>{props.id}. {props.data.projectName}</Text>
+      </Flex>
+      <Flex gap={"2"} width={{md:"71%"}} justify={{md:"center"}} >
+        <Text display={{base:"flex", md:"none"}} fontWeight="bold">Description: </Text>
+        <Text fontWeight={300} fontSize="sm" mt={"0.5"}>{props.data.projectDescription}</Text>
+      </Flex>
+      <Flex gap={"3"} justifyContent="flex-start" align={"center"}>
+        <Text display={{base:"flex", md:"none"}} fontWeight="bold">Contributors: </Text>
         {contributors}
       </Flex>
-      <Divider />
     </Flex>
+    <Divider as={"hr"} border="3px solid black" mb="2"></Divider>
+    </>
   );
 };
 

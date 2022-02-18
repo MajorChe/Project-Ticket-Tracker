@@ -17,17 +17,17 @@ const ProjectList = (props) => {
     <AddProject isOpen={isOpen} onClose={onClose}/>
     <Box
       maxW={"full"}
-      margin="10"
+      margin={{md:"10"}}
       w={"full"}
       boxShadow={"2xl"}
       rounded={"md"}
       overflow={"hidden"}
-      height="400px"
+      height={{base:"600px" ,md:"400px"}}
       overflowY={"scroll"}
     >
 
       <Box p={6}>
-        <Flex justifyContent={"space-between"} mb="20px">
+        <Flex justifyContent={"space-between"} mb="10px">
           <Text fontSize={"3xl"} fontWeight={500} textAlign="center">
             Projects
           </Text>
@@ -46,10 +46,11 @@ const ProjectList = (props) => {
             <AddIcon/> &nbsp; Add Project
           </Button>
         </Flex>
-          <Flex direction={"row"} gap="5" justifyContent="space-between"  wrap="wrap" pl={4}>
-            <Text fontWeight={600} fontSize="lg" width={"18%"} align="start">Name</Text>
-            <Text fontWeight={600} fontSize="lg" width={"54%"} align="center">Description</Text>
-            <Text fontWeight={600} fontSize="lg" width={"18%"} align="end">Contributors</Text>
+          <Text as={"hr"}  border={"1px solid black"} mb="4" mx={"50px"}></Text>
+          <Flex direction={"row"} gap="5" justifyContent="space-between"  wrap="wrap" pl={4} display={{base:"none",md:"flex"}}>
+            <Text fontWeight={600} fontSize="lg" width={{md:"18%"}} align="start">Name</Text>
+            <Text fontWeight={600} fontSize="lg" width={{md:"54%"}} align="center">Description</Text>
+            <Text fontWeight={600} fontSize="lg" width={{md:"18%"}} align="end">Contributors</Text>
           </Flex>
           <Flex direction={"column"} gap={3} mt="20px">
             {/* {projectList} */}
