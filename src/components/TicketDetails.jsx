@@ -3,36 +3,47 @@ import React from "react";
 
 const TicketDetails = (props) => {
   return (
-    <Flex pl={"5"} direction="column">
-      <Flex gap={{ base: "2", md: "4" }} align={"center"}>
+    <Flex direction="column" wrap={"wrap"} gap={{base:"3",md:"none"}}>
+      {/* Description  */}
+      <Flex align={"center"} wrap="wrap">
         <Text fontWeight={600} fontSize="lg">Description: </Text>
-        <Text>{props.document.ticketDescription}</Text>
+        <Text mt={"1"}>{props.document.ticketDescription}</Text>
       </Flex>
-      <Flex gap={{ base: "2", md: "4" }} mt={{ base: "2", md: "5" }} align="center">
+      {/* Author and project */}
+      <Flex align="center" wrap="wrap" justifyContent={{base:"start", md:"space-between"}} direction={{base:"column",md:"row"}} alignItems="start">
+        <Flex gap={"3"} align="center">
         <Text fontWeight={600} fontSize="lg">Author: </Text>
-        <Text flexGrow={1}>{props.document.authorData[0]}</Text>
-        <Text fontWeight={600} fontSize="lg">Project Name: </Text>
-        <Text>{props.document.project.projectName}</Text>
+        <Text flexGrow={1} mt="1">{props.document.authorData[0]}</Text>
+        </Flex>
+        <Flex align={"center"} gap="3">
+        <Text fontWeight={600} fontSize={{base:"md",md:"lg"}}>Project: </Text>
+        <Text fontSize={{base:"md",md:"md"}} mt="1">{props.document.project.projectName}</Text>
+        </Flex>
       </Flex>
-      <Flex justifyContent={"space-between"} mt={{ base: "2", md: "10" }} px="10">
-        <Flex direction={"column"}>
-          <Text fontWeight={600} textAlign="center">Status: </Text>
+      {/* Status,priority and type */}
+      <Flex justifyContent={"space-between"} gap="2" mt={{ base: "2", md: "10" }} px={{base:"0", md:"10"}} wrap="wrap">
+        {/* Status: check and render color based on type of Status */}
+        <Flex justifyContent={"space-around"} direction={{base:"row" ,md:"column"}} gap={{base:"3", md:"0"}}>
+          <Text fontWeight={600} textAlign="center" alignSelf={"center"}>Status: </Text>
           {props.document.status==="New" && <Text px={"5"} align={"center"} fontWeight="bold" border="2px solid" borderRadius="full" bg={"red.400"} color="white">{props.document.status}</Text>}
           {props.document.status==="InProgress" && <Text px={"5"} align={"center"} fontWeight="bold" border="2px solid" borderRadius="full" bg={"orange"} color="white">{props.document.status}</Text>}
           {props.document.status==="Completed" && <Text px={"5"} align={"center"} fontWeight="bold" border="2px solid" borderRadius="full" bg={"green"} color="white">{props.document.status}</Text>}
         </Flex>
-        <Flex direction={"column"}>
-          <Text fontWeight={600} textAlign="center">Priority: </Text>
+        {/* Priority: check and render color based on type of Priority */}
+        <Flex direction={{base:"row" ,md:"column"}} gap={{base:"3", md:"0"}}>
+          <Text fontWeight={600} textAlign="center" alignSelf={"center"}>Priority: </Text>
           {props.document.priority==="High" && <Text px={"5"} align={"center"} fontWeight="bold" border="2px solid" borderRadius="full" bg={"red.400"} color="white">{props.document.priority}</Text>}
           {props.document.priority==="Medium" && <Text px={"5"} align={"center"} fontWeight="bold" border="2px solid" borderRadius="full" bg={"orange"} color="white">{props.document.priority}</Text>}
           {props.document.priority==="Low" && <Text px={"5"} align={"center"} fontWeight="bold" border="2px solid" borderRadius="full" bg={"green"} color="white">{props.document.priority}</Text>}
         </Flex>
-        <Flex direction={"column"}>
-          <Text fontWeight={600} textAlign="center">Type: </Text>
+        {/* Type: background color is gray*/}
+        <Flex direction={{base:"row" ,md:"column"}} gap={{base:"3", md:"0"}}>
+          <Text fontWeight={600} textAlign="center" alignSelf={"center"}>Type: </Text>
           <Text px={"6"} align={"center"} fontWeight="bold" border="2px" borderRadius="full" bg={"gray"} color="white">{props.document.type}</Text>
           </Flex>
       </Flex>
-      <Flex gap={{ base: "2", md: "4" }} mt={{ base: "2", md: "10" }}>
+      {/* displaying assigned devs */}
+      <Flex gap={{ base: "2", md: "4" }} mt={{ base: "2", md: "10" }} wrap="wrap">
         <Text fontWeight={600} fontSize="lg">Assigned Devs: </Text>
         {props.document.assignedDevs.map((member, index) => {
         return (

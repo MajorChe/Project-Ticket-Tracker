@@ -73,18 +73,21 @@ const TicketItem = () => {
             >
               <Text fontSize={{ base: "xl", md: "3xl" }}> Ticket Details</Text>
             </Flex>
-            <Flex justifyContent={"space-around"} wrap="wrap" mb="50px">
-              <Box
-                width={"800px"}
-                marginX={{ base: "2", md: "20" }}
+            <Flex justifyContent={{base:"space-between", md:"start"}} gap={{base:"2", md:"100px"}} ml={{base: "none", md:"200px"}} wrap="wrap" mb="100px" direction={{base:"column",md:"row"}}>
+              <Flex 
+                direction={{base:"row",md:"column"}}
+                justifyContent="space-between"
+                width={{md:"50%"}}
+                marginX={{ base: "2", md: "0" }}
                 marginY={{ base: "2", md: "10" }}
                 p="6"
                 boxShadow={"2xl"}
                 rounded={"md"}
                 overflow={"hidden"}
-                height="400px"
+                height={{base:"full",md:"400px"}}
+                wrap={"wrap"}
               >
-                <Flex justifyContent={"space-between"} mb="20px">
+                <Flex direction={{base:"column",md:"row"}} justifyContent={{base:"center",md:"space-between"}} mb="20px" wrap={"wrap"}>
                   <Text fontSize={"xl"} fontWeight={700} textAlign="center">
                   Name: {document ? document.ticketName : null}
                   </Text>
@@ -116,7 +119,7 @@ const TicketItem = () => {
                   </Flex>
                 </Flex>
                 <TicketDetails document={document}/>
-              </Box>
+              </Flex>
               <Flex direction={"column"}>
               <Text align={"center"} fontSize="lg">Ticket Comments</Text>
               <TicketCommentComp document={document}/>

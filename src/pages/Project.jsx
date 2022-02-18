@@ -48,10 +48,12 @@ export const Project = () => {
           marginX={{ base: "2", md: "10" }}
           marginY={{ base: "2", md: "10" }}
           p="6"
+          mx={"6"}
           boxShadow={"2xl"}
           rounded={"md"}
           overflow={"hidden"}
-          height="539px"
+          // height="539px"
+          height={{base:"600px" ,md:"400px"}}
           overflowY={"scroll"}
         >
           <Flex justifyContent={"space-between"} mb="20px">
@@ -75,7 +77,7 @@ export const Project = () => {
           {/* list of all tickets go below */}
           <TicketList/>
         </Box>
-        <Flex direction={"column"}>
+        <Flex direction={"column"} mt={{base:"5",md:"1"}}>
           <TeamMembersComp document={doc}/>
           <Text textAlign={"center"} fontSize="lg">Project comments</Text>
           <ProjectCommentComponent document={doc}/>

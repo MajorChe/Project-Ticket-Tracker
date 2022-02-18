@@ -26,9 +26,10 @@ const TicketCommentComp = (props) => {
 
   return (
     <Flex direction={"column"}>
-      <Box
-        width={"350px"}
-        marginX={{ base: "2", md: "12" }}
+      <Flex
+        width={{base:"none", md:"full"}}
+        marginX={{ base: "4", md: "12" }}
+        mr={{base:"4",md:"none"}}
         marginY={{ base: "2", md: "2" }}
         p="5"
         bg={useColorModeValue("white", "gray.800")}
@@ -65,7 +66,7 @@ const TicketCommentComp = (props) => {
               </Box>
             ))}
         </Flex>
-      </Box>
+      </Flex>
       <Formik
         initialValues={{ name: "", description: "" }}
         onSubmit={() => {
@@ -85,7 +86,7 @@ const TicketCommentComp = (props) => {
           }
         }}
       >
-        <Flex as={Form} gap="3" alignSelf={"center"}>
+        <Flex px={{base:"5", md:"0"}} as={Form} gap="3" alignSelf={"center"} ml={{base: "2", md:"12"}} align={"center"}>
           <Input
             type={"text"}
             placeholder="Enter comment"

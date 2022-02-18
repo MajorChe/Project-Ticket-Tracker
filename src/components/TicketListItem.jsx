@@ -7,38 +7,46 @@ const TicketListItem = (props) => {
   return (
     <>
       <Flex
-        direction={"row"}
-        align={"center"}
+        direction={{base:"column",md:"row"}}
         wrap="wrap"
         px={{ base: "1px", md: "2" }}
         py={{ base: "1px", md: "2" }}
         mt={"5"}
+        gap="3"
       >
-        <Text
-          fontWeight={300}
-          fontSize="md"
-          onClick={() => navigate(`/ticket/${props.document.id}`)}
-          cursor="pointer"
-          _hover={{ color: "blue", fontWeight: "bold" }}
-        >
-          {props.id}. {props.document.ticketName}
-        </Text>
-        <Text
-          fontWeight={300}
-          fontSize="sm"
-          flex="1"
-          width={"50%"}
-          textAlign="center"
-        >
-          {props.document.ticketDescription}
-        </Text>
-        <Tooltip label={props.document.authorData[0]} bg='blue.100' color='black'>
-        <Avatar size={"sm"} src={props.document.authorData[1]}>
-          <AvatarBadge boxSize='1.25em' bg='green.500' />
-        </Avatar>
-      </Tooltip>
+        <Flex gap={{base:"3",md:"none"}}>
+          <Text display={{base:"flex", md:"none"}} fontWeight="bold">Name: </Text>
+          <Text
+            fontWeight={300}
+            fontSize="md"
+            onClick={() => navigate(`/ticket/${props.document.id}`)}
+            cursor="pointer"
+            _hover={{ color: "blue", fontWeight: "bold" }}
+          >
+            {props.id}. {props.document.ticketName}
+          </Text>
+        </Flex>
+        <Flex gap={{base:"3",md:"none"}} width={{md:"78%"}} justify={{md:"center"}}>
+          <Text display={{base:"flex", md:"none"}} fontWeight="bold">Description: </Text>
+          <Text
+            fontWeight={300}
+            fontSize="sm"
+            
+            textAlign={{md:"center"}}
+          >
+            {props.document.ticketDescription}
+          </Text>
+        </Flex>
+        <Flex gap={{base:"3",md:"none"}}>
+          <Text display={{base:"flex", md:"none"}} fontWeight="bold">Author: </Text>
+          <Tooltip label={props.document.authorData[0]} bg='blue.100' color='black'>
+          <Avatar size={"sm"} src={props.document.authorData[1]}>
+            <AvatarBadge boxSize='1.25em' bg='green.500' />
+          </Avatar>
+        </Tooltip>
       </Flex>
-      <Divider />
+      </Flex>
+      <Divider as={"hr"} border="3px solid black" mt="2"></Divider>
     </>
   );
 };
