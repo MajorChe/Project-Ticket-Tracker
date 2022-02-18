@@ -11,7 +11,7 @@ const Dashboard = () => {
       <SideBar />
       <Flex direction={"column"} w="100%" bgColor={"gray.100"}>
         <Navbar />
-        <Flex mt={"20px"} justifyContent="center" gap={"100px"} wrap="wrap" px={{ base: 2, sm: 12, md: 1 }}>
+        <Flex mt={"20px"} mb={{base:"20px"}} justifyContent="center" gap={"100px"} wrap="wrap" px={{ base: 1, sm: 12, md: 1 }}>
           <ProjectList />
         </Flex>
         <DashboardMetrics />
