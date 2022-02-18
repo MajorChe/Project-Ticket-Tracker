@@ -18,8 +18,8 @@ const ProjectListItem = (props) => {
     <>
     <Flex direction={"row"} gap={3} wrap="wrap" px="2" textAlign={{md:"center"}}>
       <Flex align={"center"} gap="2" width={{md:"18%"}}>
-        <Text display={{base:"flex", md:"none"}} fontWeight="bold">Name: </Text>
-        <Text fontWeight={300} fontSize="md" onClick={() => navigate(`/project/${props.data.id}`)} cursor="pointer" _hover={{color: "blue", fontWeight: "bold"}}>{props.id}. {props.data.projectName}</Text>
+        <Text display={{base:"flex", md:"none"}} fontWeight="bold" onClick={() => navigate(`/project/${props.data.id}`)}>Name: </Text>
+        <Text fontWeight={300} color="blue" fontSize="md" onClick={() => navigate(`/project/${props.data.id}`)} cursor="pointer" _hover={{color: "darkblue", fontWeight: "bold"}}>{props.id}. {props.data.projectName}</Text>
       </Flex>
       <Flex gap={"2"} width={{md:"69%"}} justify={{md:"center"}} >
         <Text display={{base:"flex", md:"none"}} fontWeight="bold">Description: </Text>

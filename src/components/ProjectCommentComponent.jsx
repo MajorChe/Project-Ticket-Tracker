@@ -25,9 +25,9 @@ const ProjectCommentComponent = (props) => {
   return (
     <>
       <Flex
-        width={{base:"none", md:"full"}}
+        width={{base:"90%", md:"full"}}
         marginX={{ base: "4", md: "12" }}
-        mr={{base:"4",md:"none"}}
+        // px={{base:"2",md:"none"}}
         marginY={{ base: "4", md: "2" }}
         p="5"
         bg={useColorModeValue("gray.100", "gray.800")}
@@ -84,7 +84,7 @@ const ProjectCommentComponent = (props) => {
           }
         }}
       >
-        <Flex as={Form} gap="3" alignSelf={"center"} ml={{base: "2", md:"12"}} align={"center"}>
+        <Flex as={Form} gap="3" alignSelf={{base:"center", md:"start"}} ml={{base: "5", md:"50px"}} align={"center"}>
           <Input
             type={"text"}
             placeholder="Enter comment"

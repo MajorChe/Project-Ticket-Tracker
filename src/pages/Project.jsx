@@ -76,7 +76,9 @@ export const Project = () => {
         <Flex direction={"column"} mt={{base:"5",md:"1"}}>
           <TeamMembersComp document={doc}/>
           <Text textAlign={"center"} fontSize="lg">Project comments</Text>
-          <ProjectCommentComponent document={doc}/>
+          <Flex direction={"column"}>
+          <ProjectCommentComponent document={doc} />
+          </Flex>
         </Flex>
       </Flex>
       </>}

@@ -30,7 +30,7 @@ const TicketsList = () => {
         <Flex
           mt={"20px"}
           direction="column"
-          height={"80%"}
+          h="80vh"
           wrap="wrap"
           px={{ base: 2, sm: 12, md: 12 }}
         >
@@ -71,6 +71,7 @@ const TicketsList = () => {
           </Table>
         </Flex>
         <Box
+          alignSelf={"flex-end"}
           as="footer"
           role="contentinfo"
           left={"0"}

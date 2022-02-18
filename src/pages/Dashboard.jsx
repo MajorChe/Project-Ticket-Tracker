@@ -7,11 +7,11 @@ import ProjectList from "../components/ProjectList";
 
 const Dashboard = () => {
   return (
-    <Flex direction={{ base: "column", md: "row" }} >
+    <Flex direction={{ base: "column", md: "row" }}>
       <SideBar />
-      <Flex direction={"column"} w="100%" bgColor={"gray.100"}>
+      <Flex direction={"column"} w="100%" bgColor={"gray.100"} justifyContent="center">
         <Navbar />
-        <Flex mt={"20px"} mb={{base:"20px"}} justifyContent="center" gap={"100px"} wrap="wrap" px={{ base: 1, sm: 12, md: 1 }}>
+        <Flex mt={"20px"} mb={{base:"20px"}} mx={{base:"3",md:"0"}} justifyContent="center" gap={"100px"} wrap="wrap" px={{ base: 1, sm: 12, md: 1 }}>
           <ProjectList />
         </Flex>
         <DashboardMetrics />

@@ -78,7 +78,7 @@ const TicketItem = () => {
                 direction={{base:"row",md:"column"}}
                 justifyContent="space-between"
                 width={{md:"50%"}}
-                marginX={{ base: "2", md: "0" }}
+                marginX={{ base: "4", md: "0" }}
                 marginY={{ base: "2", md: "10" }}
                 p="6"
                 boxShadow={"2xl"}

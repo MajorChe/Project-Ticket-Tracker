@@ -18,10 +18,11 @@ const TicketListItem = (props) => {
           <Text display={{base:"flex", md:"none"}} fontWeight="bold">Name: </Text>
           <Text
             fontWeight={300}
+            color="blue"
             fontSize="md"
             onClick={() => navigate(`/ticket/${props.document.id}`)}
             cursor="pointer"
-            _hover={{ color: "blue", fontWeight: "bold" }}
+            _hover={{ color: "darkblue", fontWeight: "bold" }}
           >
             {props.id}. {props.document.ticketName}
           </Text>
