@@ -21,7 +21,7 @@ const ProjectListItem = (props) => {
         <Text display={{base:"flex", md:"none"}} fontWeight="bold">Name: </Text>
         <Text fontWeight={300} fontSize="md" onClick={() => navigate(`/project/${props.data.id}`)} cursor="pointer" _hover={{color: "blue", fontWeight: "bold"}}>{props.id}. {props.data.projectName}</Text>
       </Flex>
-      <Flex gap={"2"} width={{md:"71%"}} justify={{md:"center"}} >
+      <Flex gap={"2"} width={{md:"69%"}} justify={{md:"center"}} >
         <Text display={{base:"flex", md:"none"}} fontWeight="bold">Description: </Text>
         <Text fontWeight={300} fontSize="sm" mt={"0.5"}>{props.data.projectDescription}</Text>
       </Flex>
