@@ -29,11 +29,13 @@
 <hr>
 
 ## Project Demo
-<iframe src="./src/assets/video.mp4" title="Project-Ticket-Tracker"></iframe>
+https://user-images.githubusercontent.com/64259603/154788274-7b75f6d2-3762-4823-b494-6d27a1f2a2bf.mp4
 <hr>
 
 ## Setup
 ### To get a local copy of Project-Ticket-Tracker and running, follow these steps:
+
+
 
 Clone the repo
 
