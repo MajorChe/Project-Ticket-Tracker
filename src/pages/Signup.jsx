@@ -45,11 +45,12 @@ const Signup = () => {
         }}
       >
         <Flex
+          direction={"column"}
           align={"center"}
           justify={"center"}
           bg={useColorModeValue("gray.50", "gray.800")}
         >
-          <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+          <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6} minH="79vh">
             <Stack align={"center"}>
               <Heading
                 fontFamily={"poppins"}
@@ -143,6 +144,20 @@ const Signup = () => {
               </Stack>
             </Box>
           </Stack>
+          <Box
+          as="footer"
+          role="contentinfo"
+          left={"0"}
+          bottom={"0"}
+          width={"100%"}
+          mt="10"
+          py="5"
+          px={{ base: "4", md: "8" }}
+          bg={"#bee3f8"}
+          color={"black"}
+        >
+          <Text align={"center"}>Created by Charit</Text>
+        </Box>
         </Flex>
       </Formik>
     </>

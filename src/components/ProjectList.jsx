@@ -48,9 +48,9 @@ const ProjectList = (props) => {
         </Flex>
           <Text as={"hr"}  border={"1px solid black"} mb="4" mx={"50px"}></Text>
           <Flex direction={"row"} gap="5" justifyContent="space-between"  wrap="wrap" pl={4} display={{base:"none",md:"flex"}}>
-            <Text fontWeight={600} fontSize="lg" width={{md:"18%"}} align="start">Name</Text>
-            <Text fontWeight={600} fontSize="lg" width={{md:"54%"}} align="center">Description</Text>
-            <Text fontWeight={600} fontSize="lg" width={{md:"18%"}} align="end">Contributors</Text>
+            <Text fontWeight={600} fontSize="lg" width={{md:"20%"}} align="start">Name</Text>
+            <Text fontWeight={600} fontSize="lg" width={{md:"59%"}} align="center">Description</Text>
+            <Text fontWeight={600} fontSize="lg" width={{md:"18%"}} align="center">Contributors</Text>
           </Flex>
           <Flex direction={"column"} gap={3} mt="20px">
             {/* {projectList} */}

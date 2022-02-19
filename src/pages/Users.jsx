@@ -28,8 +28,8 @@ export const Users = () => {
         </Text>
         <Flex
           mt={"20px"}
-          direction={{ base: "column", md: "row" }}
-          height={"80%"}
+          direction={{ base: "column", md: "column" }}
+          h="70vh"
           wrap="wrap"
           px={{ base: 2, sm: 12, md: 12 }}
           mx={{ base: "20px", md: "150px" }}
